@@ -1,0 +1,18 @@
+.search-menu{
+    width: 100% !important;
+    max-width: 100% !important;
+
+    button{
+        text-align: center;
+    }
+
+
+}
+
+@media only screen and (min-width : 680px)  {
+    .search-menu{
+        box-shadow: none !important;
+        margin: 0 !important;
+        background: transparent !important;
+    }
+}

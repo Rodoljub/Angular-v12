@@ -1,0 +1,130 @@
+<ng-container *ngIf="textareaShow"></ng-container>
+<button *ngIf="arrowBackShow"
+        mat-button ngClass="header-button"
+        (click)="closeSearch()"    
+>
+    <mat-icon svgIcon="arrowBack"></mat-icon>
+</button>
+
+<div class="search-form-input {{searchBorderAccentColorClass}}" style="display: none"
+        id="search-form-input"
+> 
+        
+    <!-- #region Form Field Tags appearance="outline" -->
+    <mat-form-field   floatLabel="never" class="search-mat-form-field"
+        id="search-mat-form-field"
+        hidden="load"
+        (click)="clickOnChipList()"
+        >
+        <mat-chip-list #chipList class="new-tag" >
+
+            <!-- #region Tag List -->
+                <ng-container *ngIf="isTagsList">
+                    <mat-chip *ngFor="let tag of searchForm.selectedTags; trackBy: trackTags" 
+                        (click)="removeTag(tag)" 
+                        class="upload-tag-chip" 
+                        selected="false"
+                        [removable]="true" 
+                    >
+                        {{ tag }}
+                        <mat-icon matChipRemove svgIcon="clear"
+                        (click)="removeTag(tag)">
+                        </mat-icon>
+                    </mat-chip>
+                </ng-container>
+            <!-- #endregion Tag List -->
+
+            <!-- #region Input -->
+                <input style="display:none; max-width:0"
+                    [matChipInputFor]="chipList" 
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="false"
+                    (matChipInputTokenEnd)="addTagFromInput($event)"
+                    [matAutocomplete]="auto"
+                    placeholder=""          
+                >
+
+
+                <textarea 
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1" 
+                    #searchInputElement
+                    placeholder="{{searchInputPlaceholder}}"
+                    [formControl]="searchControl"
+                    type="text"
+                    Name="searchInput"
+                    style="min-width:25%"
+                    (click)="clickOnTextarea()"
+                    (focus)="focusTextarea()"
+                    (blur)="blurTextarea()"
+                    (keydown.enter)="addTagFromInput($event)"
+                >
+                </textarea>
+
+            <!-- #endregion Input -->
+
+        </mat-chip-list>
+
+        <mat-autocomplete 
+            class="mat-autocomplete-search"
+            #auto="matAutocomplete" 
+        >
+            <ng-container >
+                <mat-option disabled class="mat-option-tags" 
+                    *ngFor="let tag of searchedTags" [value]="tag.name" id="selectedTags"
+                    (click)="addTag(tag.name)"
+                >
+                    {{ tag.name }}
+                </mat-option>
+
+                <!-- <mat-option disabled class="mat-option-tags" 
+                        id="selectedTags"
+                    (click)="addTag('abstract', $event.stopPropagation())"
+                >
+                    abstract
+                </mat-option> -->
+            </ng-container>     
+
+        </mat-autocomplete>
+
+    </mat-form-field> 
+    <!-- #endregion Form Field Tags -->
+
+    <ng-container *ngIf="currentView !== smallView && saveSearchEnabled">
+        <app-navigation-label
+            [navigationLabel]="'Save'"
+            [active]="false"
+            (click)="saveSearch()"
+    
+        >
+        </app-navigation-label>
+    </ng-container>
+
+    <app-search-menu  *ngIf="currentView !== smallView && searchInputIsOpen"
+        [searchControlValue]="searchInputValue"
+        [selectedTags]="searchForm.selectedTags"
+        [saveSearchEnable]="saveSearchEnabled"
+    >
+    </app-search-menu>
+
+<!-- {{searchButtonAccentBorderClass}} header-button -->
+    <button *ngIf="!load && currentView !== smallView"
+        mat-button color="{{searchButtonAccentColor}}"
+        ngClass="header-search-button
+         {{searchButtonAccentColorClass}} {{searchButtonAccentBorderClass}}
+         {{searchButtonActiveClass}}"
+        (click)="doSearch()"    
+    >
+        <mat-icon svgIcon="search">
+        </mat-icon>
+    </button>
+</div>
+
+
+<button *ngIf="currentView === smallView && !searchInputIsOpen"  
+            mat-button ngClass="header-button header-mobile-search-button"
+            (click)="dispatchSearchFormOpen()"    
+>
+    <mat-icon svgIcon="search">
+    </mat-icon>
+</button>

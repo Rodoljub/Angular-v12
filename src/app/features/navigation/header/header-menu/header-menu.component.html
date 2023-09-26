@@ -1,0 +1,40 @@
+
+<button mat-button ngClass="header-button {{accentColorClass}}"
+        [matMenuTriggerFor]="menu" 					
+        #menuTrigger="matMenuTrigger"
+        (menuOpened)="onMenuOpened()">
+    <mat-icon svgIcon="moreHoriz"
+        
+    >
+    </mat-icon>
+</button>
+
+<mat-menu 
+    class="header-menu header-profile-switch-nested-menu-arrows" 
+    #menu="matMenu" 
+    [overlapTrigger]="false"
+    (closed)="onMenuClosed()"
+>
+    <div app-menu-navigation
+        [userAuthenticated]="userAuthenticated"
+    >
+    </div>
+</mat-menu>
+
+<!-- #region Header Profile User Submenu Theme -->
+<!-- <mat-menu  #theme="matMenu">*ngIf="boolMenuTheme" -->
+    
+    <!-- <button mat-menu-item  (click)="changeTheme('gray')" class="header-button" color="primary"> -->
+        <!-- <mat-icon></mat-icon> -->
+        <!-- <span>White Pink</span> -->
+    <!-- </button> -->
+    <!-- <button mat-menu-item  (click)="changeTheme('purple')"> -->
+        <!-- <mat-icon></mat-icon> -->
+        <!-- <span>Purple</span> -->
+    <!-- </button> -->
+    <!-- <button mat-menu-item (click)="changeTheme('blue')"> -->
+            <!-- <mat-icon></mat-icon> -->
+            <!-- <span>Dark Red</span> -->
+    <!-- </button> -->
+<!-- </mat-menu> -->
+<!-- #endregion Header Profile User Submenu Theme -->

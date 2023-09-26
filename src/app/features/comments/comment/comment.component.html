@@ -1,0 +1,278 @@
+
+<div class="comment-section" >
+    <div class="comment-body">  
+        <!-- #region Comment User Image -->
+            <img ngClass="comment-circular-image"
+                [routerLink]="['','user', comment.UserProfile.urlSegment]" 
+                alt=""
+                appImagePreloader            
+                [attr.src]=''
+                [imagePath]="userImage"
+                [isHeaderProfileImg]="true"
+            />
+        <!-- #endregion Comment User Image -->
+
+        <div class="comment-main" *ngIf="!isEditComment">
+
+            <!-- #region User Name -->
+            <div class="comment-user-name">
+                <a [routerLink]="['','user', comment.UserProfile.urlSegment]">{{comment.UserProfile.name}}</a>
+                <!-- <p>{{comment.CreatedDate}}</p> -->
+            </div>
+            <!-- #endregion User Name -->
+
+            <!-- #region Show More Comment -->
+            <div class="comment-show-more-content" *ngIf="isCommentContentExpandedBool">
+                <a *ngIf="showMoreCommentContent" (click)="toggleMoreLess()">
+                    {{moreLessCommentContent}}
+                </a>
+            </div>
+            <!-- #endregion Show More Comment -->
+            
+            <!-- #region Comment Content -->
+            <div id="expander" class="comment-main-expander">
+
+                <div ngClass="comment-main-expander-content{{commentContentExpandedClass}}">
+                    <p id="content" #content>
+                        {{comment.Content}}
+                    </p>
+                </div>
+                
+                <div class="comment-show-less-content" *ngIf="!isCommentContentExpandedBool">
+                    <a *ngIf="showMoreCommentContent" (click)="toggleMoreLess()">
+                        {{moreLessCommentContent}}
+                    </a>
+                </div>
+
+            </div>
+            <!-- #endregion Comment Content -->
+
+            <!-- #region Comment Like Reply  -->
+            <div class="comment-action-buttons">
+                <div id="toolbar">
+
+                    <p>{{comment.CreatedDate  | dateFromNow}}</p>
+
+                    <div *ngIf="inlineShowHideReply && !replyStopList" class="comment-action-spacer"></div>
+
+                    <!--#region Like Icon (mouseup)="clickOnActionIcon()" -->
+                    <div class="comment-replies-like-wrap" >
+                        <app-action-icon
+                            [userAuthenticated]="userAuthenticated"
+                            [actionIconCouterTooltips]="actionLikeIconCouterTooltips"
+                            [actionIconCouterTooltipsClass]='actionIconCouterTooltipsClass'
+                            [actionIconCouterClasses]="actionIconCouterClasses"
+                            [svgIconPath]="inputHtmlSvgIconLike"
+                            [actionType]="likeActionType"
+                            [actionIconCount]="comment.LikeCount"
+                            [actionIconUserAction]="comment.UserLiked"
+                            [clickActionIconTrigger]="clickItemLikeTrigger"
+                            [apiUrl]="likeApi"
+                            [entityId]="comment.Id"
+                            [entityType]="commentEntityTypeName"
+                            [isMobileView]="isMobileView"
+                            (userAction)="onUserActionLike($event)"
+                            (redirectToLogin)="redirectToLogin()"
+                        >
+                        </app-action-icon>
+                    </div>
+                    <!--#endregion Like Icon -->
+
+                    <!-- #region Replies Count Icon (click)="onReplyButton()" -->
+                    <div class="replies-count-icon comment-count-icon" 
+                        style="cursor: default" 
+                        
+                    >
+                        <div  class="replies-count-icon-wrap">
+                        <!-- <span *ngIf="!replyStopList" class="count">{{replysCount}}</span> -->
+
+                        <app-base-button-icon-image
+                            [matIcon]="true"
+                            [isCount]="!replyStopList"
+                            [count]="replysCount"
+                            [svgIcon]="'commentIcon'"
+                            [tooltip]="commentsIconTooltip"
+                            [tooltipPosition]="aboveTooltipPosition"
+                            (clickOnIcon)="onReplyButton()"
+                        >
+                        </app-base-button-icon-image>
+
+                        <!-- <mat-icon svgIcon="commentIcon"></mat-icon> -->
+                        </div>
+                    </div>
+                    <!-- #endregion Replies Count Icon -->
+
+                    <!-- #region Inline Show Hide Replies inlineShowHideReply && -->
+                    <div *ngIf="!replyStopList && !commentsProgresBar" class="replys-show-hide-section">
+
+                        <a (click)="showReplys()" *ngIf="hasReplys && !commentsProgresBar && !showReplysBool">
+                                {{showHideComments}}
+                            <!-- <mat-icon *ngIf="!showReplysBool" ngClass="reply-show-hide-icon" svgIcon="sidenavLeft"></mat-icon> -->
+                        </a>
+            
+                        <a *ngIf="hasReplys && !commentsProgresBar && showReplysBool" (click)="hideReplys($event)">
+                                {{showHideComments}}
+                            <!-- <mat-icon *ngIf="showReplysBool" 
+                                ngClass="reply-show-hide-icon{{repliesArrowIconClass}}" 
+                                svgIcon="sidenavLeft">
+                            </mat-icon> -->
+                        </a>
+                    </div>
+                    <!-- #endregion Inline Show Hide Replies -->
+
+                    <!-- #region Dots Loader -->
+                    <div class="comment-dots-loader" *ngIf="commentsProgresBar && inlineShowHideReply">
+                        <app-dots-loader class="comments-spinner" ></app-dots-loader>
+                    </div> 
+                    <!-- #endregion Dots Loader -->
+
+                    <!-- #region Reply Button -->
+                     <!-- <div id="reply-button" (click)="onReplyButton()">
+                        <a>
+                            {{replyButtonLabel}}
+                        </a>
+                    </div> -->
+                    <!--#endregion Reply Button -->
+                    
+                    <!-- #region Comment Action Menu -->
+                    <div class="comment-action-menu">
+                        <div  *ngIf="commentReportMenu && userAuthenticated">
+
+                            <!-- ([matMenuTriggerFor]="commentActionMenu") -->
+                            <mat-icon class="action-menu-icon" svgIcon="more_vert" 
+                                (click)="openCommentDialog(commentEntityTypeName, comment.Id, ownerComment, itemId, comment)"
+                            >
+                            </mat-icon>
+
+                            <!-- <mat-menu #commentActionMenu="matMenu" [overlapTrigger]="false">
+
+                                <button mat-menu-item *ngIf="!ownerComment" (click)="reportComment()">
+                                    Report spam or abuse
+                                </button>
+                                <button mat-menu-item *ngIf="ownerComment" (click)="deleteComment($event)">
+                                    Delete
+                                </button>
+
+                            </mat-menu> -->
+                        </div>
+                    </div>
+                    <!-- #endregion Comment Action Menu -->
+                </div>                   
+            </div>
+            <!-- #endregion Comment Like Reply -->
+       
+            <!-- #region Reply Form -->
+                <mat-card-header *ngIf="isReplyInputOpen && !sendReplay">
+                    <mat-card-title class="comment-heaader-title">
+
+                        <span class="add-comment-image-wrap">
+                            <img class="add-replay-circular-image" 
+                                alt=""
+                                appImagePreloader            
+                                [attr.src]=''
+                                [imagePath]="userImageOwner"
+                                [isHeaderProfileImg]="true"
+                            />
+                        </span>
+
+                        <app-comment-form
+                        [userAuthenticated]="userAuthenticated"
+                            [inputValue]="commentInputValue"
+                            [inputPlaceholder]="placeholderAddReply"  
+                            [focusCommentTrigger]='focusCommentTrigger'                 
+                            (clickOnSendIconEmit)="addReply($event)"
+                        >
+                        </app-comment-form>
+                    </mat-card-title>
+                </mat-card-header>
+            <!-- #endregion Reply Form -->
+
+            <!-- #region Dots Loader -->
+            <div class="comment-dots-loader" *ngIf="sendReplay">
+                <app-dots-loader class="comments-spinner" ></app-dots-loader>
+            </div>
+            <!-- #endregion Dots Loader -->
+            
+            <!-- #region Show Hide Replies Mobile -->
+            <!-- <div *ngIf="hasReplys && !inlineShowHideReply && !commentsProgresBar" class="replys-show-hide-section">
+    
+                <a (click)="showReplys()" *ngIf="hasReplys && !commentsProgresBar && !showReplysBool">
+                        {{showHideComments}}
+                </a>
+
+                <a *ngIf="hasReplys && !commentsProgresBar && showReplysBool" (click)="hideReplys($event)">
+                        {{showHideComments}}
+                </a>
+            </div> -->
+            <!-- #endregion Show Hide Replies Mobile -->
+            
+            <!-- #region Dots Loader -->
+            <!-- <div class="comment-dots-loader" *ngIf="commentsProgresBar && !inlineShowHideReply">
+                <app-dots-loader class="comments-spinner" ></app-dots-loader>
+            </div>  -->
+            <!-- #endregion Dots Loader -->
+
+            <!-- <div *ngIf="showReplysBool" class="detail-comment-separator"></div> -->
+        </div>
+
+        <!-- #region Edit Comment -->
+            <app-comment-form *ngIf="isEditComment  && !sendEditComment"
+            [userAuthenticated]="userAuthenticated"
+                [inputValue]="comment.Content"
+                [inputPlaceholder]="placeholderEdit"                   
+                (clickOnSendIconEmit)="updateComment($event)"
+            >
+            </app-comment-form>
+
+            <div class="comment-dots-loader" *ngIf="isEditComment && sendEditComment">
+                <app-dots-loader class="comments-spinner" ></app-dots-loader>
+            </div>
+        <!-- #endregion Edit Comment -->
+    </div>
+</div>
+
+<div class="replys-section" *ngIf="!replyStopList">
+    <div id="expander">
+
+       
+
+        <!-- #region Replies Content -->
+        <div id="content" #content ngClass="reply-content{{expandedReplyContentClass}}">
+
+            <!-- #region Replies List -->
+            <div *ngIf="replyBool === true" id="expander-content">
+                <div app-comment *ngFor="let reply of replies" [comment]="reply"
+                [userAuthenticated]="userAuthenticated"
+
+                    [itemId]="itemId" 
+                    [reportedContentReasons]="reportedContentReasons"
+                    [commentParentId]="commentParentId" 
+                    (replyUpdate)="replyUpdated($event)" 
+                    (deleteEntity)="deleteComment($event)"
+                    (updatedComment)="onUpdatedComment($event)"
+                    (updatedComments)="onUpdatedComments($event)"
+                >
+                </div>
+            </div>
+            <!-- #endregion Replies Content -->
+
+
+            <div *ngIf="replies.length < replysCount" class="show-more-replies-wrap">
+                <a *ngIf="replies.length < replysCount 
+                        && !commentsProgresBar 
+                        && replies.length !== 0
+                        && !dontShowMoreOnAddedReply"
+                    (click)="showReplys()"
+                >
+                    {{showMoreReplies}}
+                </a>
+                <div class="comment-dots-loader" *ngIf="replies.length !== 0 && commentsProgresBar">
+                    <app-dots-loader class="comments-spinner" ></app-dots-loader>
+                </div>  
+            </div>
+        </div>
+        <!-- #endregion Replies Content -->
+    </div>
+</div>
+
+<!-- <div class="detail-comment-separator"></div> -->

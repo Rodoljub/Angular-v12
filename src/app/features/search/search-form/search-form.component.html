@@ -1,0 +1,77 @@
+<!-- style="display: none" -->
+<div class="search-form-input {{searchBorderAccentColorClass}}" 
+    id="guest-search-form-input"
+> <!-- #region Form Field Tags appearance="outline" -->
+    <mat-form-field   floatLabel="never" class="search-mat-form-field"
+        id="search-mat-form-field"
+        hidden="load"
+        (click)="clickOnChipList()"
+        >
+        <mat-chip-list #chipList class="new-tag" >
+
+            <!-- #region Tag List -->
+                <ng-container *ngIf="isTagsList">
+                    <mat-chip *ngFor="let tag of selectedTags; trackBy: trackTags" 
+                        (click)="removeTag(tag)" 
+                        class="upload-tag-chip" 
+                        selected="false"
+                        [removable]="true" 
+                    >
+                        {{ tag }}
+                        <mat-icon matChipRemove svgIcon="clear">
+                        </mat-icon>
+                    </mat-chip>
+                </ng-container>
+            <!-- #endregion Tag List -->
+
+            <!-- #region Input -->
+                <input style="display:none; max-width:0"
+                    [matChipInputFor]="chipList" 
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="false"
+                    (matChipInputTokenEnd)="addTagFromInput($event)"
+                    [matAutocomplete]="auto"
+                    placeholder=""          
+                >
+
+                <ng-container *ngIf="textareaShow"></ng-container>
+                <textarea 
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1" #searchInputElement 
+                    (click)="clickOnTextarea()"
+                    (keydown.enter)="addTagFromInput($event)"
+                    (focusout)="textareaOnBlur()"
+                    placeholder="{{searchInputPlaceholder}}" 
+                    [formControl]="searchControl"
+                    type="text" 
+                    Name="searchInput"    
+                    style="min-width:25%"   
+                    (focus)="focusInput()"
+                    (blur)="blurInput()"  
+                >
+                </textarea>
+
+            <!-- #endregion Input MobileView -->
+
+        </mat-chip-list>
+
+        <mat-autocomplete 
+            class="mat-autocomplete-search"
+            #auto="matAutocomplete" 
+        >
+            <ng-container>
+                <!-- autocompleteTags -->
+                <mat-option disabled class="mat-option-tags" 
+                    *ngFor="let tag of searchedTags" [value]="tag.name" id="selectedTags"
+                    (click)="addTag(tag.name)"
+                >
+                    {{ tag.name }}
+                </mat-option>
+            </ng-container>
+            
+
+        </mat-autocomplete>
+
+    </mat-form-field> 
+    <!-- #endregion Form Field Tags -->
+</div>

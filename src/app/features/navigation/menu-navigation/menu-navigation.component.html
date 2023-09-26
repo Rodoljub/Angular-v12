@@ -1,0 +1,57 @@
+
+<button style="height: 0; padding: 0 !important; border-width: 0 !important"></button>
+
+
+<!-- color="{{portfolioButtonColor}}" *ngIf="isMobileView" (click)="closeMenu()"-->
+<button 
+   class="hamburger-menu-button" mat-button (click)="closeMenu()" (click)="headerNavigateToUpload()"  >
+  <!-- <mat-icon class="h-m-b-icon" svgIcon="upload" color="accent">
+  </mat-icon> -->
+  <!-- <span> -->
+    {{uploadLabel}}
+
+  <!-- </span> -->
+</button>
+<div class="mat-dialog-actions-mobile-separator"></div>
+<!-- <button class="hamburger-menu-button" mat-button routerLink="/portfolio" (click)="closeMenu()" color="{{portfolioButtonColor}}"> -->
+  <!-- <mat-icon class="h-m-b-icon" svgIcon="portfolio" color="accent">
+  </mat-icon> -->
+  <!-- <span>{{portfolioLabel}}</span>
+</button>
+<div class="mat-dialog-actions-mobile-separator"></div> -->
+
+
+<!-- <button class="hamburger-menu-button" mat-button routerLink="/favourites" (click)="closeMenu()" color="{{favouritesButtonColor}}"> -->
+  <!-- <mat-icon class="h-m-b-icon favourite-icon" svgIcon="favouriteFill" color="accent"></mat-icon> -->
+  <!-- <span>{{favouritesLabel}}</span>
+</button>
+<div class="mat-dialog-actions-mobile-separator"></div> -->
+
+<!-- <button class="hamburger-menu-button" mat-button routerLink="/savedSearches" (click)="closeMenu()" 
+  color="{{saveSearchButtonColor}}"> -->
+  <!-- <mat-icon class="h-m-b-icon favourite-icon" svgIcon="search" color="accent"></mat-icon> -->
+  <!-- <mat-icon  color="accent" svgIcon="sidenav"></mat-icon> -->
+  <!-- <span>{{saveSearchLabel}}</span>
+</button>
+<div class="mat-dialog-actions-mobile-separator"></div> -->
+
+<button  mat-button (click)="navigateToProfile()" (click)="closeMenu()"
+  class="hamburger-menu-button" color="{{profileButtonColor}}">
+  <!-- <mat-icon class="h-m-b-icon">  
+      <img *ngIf="userData !== undefined && userData.UserImage"  class="header-profile-circular-image"
+          alt=""
+          appImagePreloader   
+          [isHeaderProfileImg]="true"         
+          [attr.src]=''
+          [imagePath]="userData.UserImage"/> 
+  </mat-icon> -->
+  <!-- <mat-icon class="h-m-b-icon" svgIcon="profile" color="accent"></mat-icon> -->
+  <span>{{profileLabel}}</span>
+  <!-- userData?.Name -->
+</button>
+<div class="mat-dialog-actions-mobile-separator"></div>
+
+<button class="hamburger-menu-button" mat-button (click)="logout()" (click)="closeMenu()">
+  <!-- <mat-icon class="h-m-b-icon" svgIcon="logout" color="accent"></mat-icon> -->
+  <span>{{logoutLabel}}</span>
+</button>

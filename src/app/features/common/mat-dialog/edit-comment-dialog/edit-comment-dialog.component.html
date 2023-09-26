@@ -1,0 +1,29 @@
+<span>
+    <h4>{{editCommentTitle}}</h4>
+    <form [formGroup]="editCommentForm">
+        <mat-form-field class="save-search-dialog-input" floatLabel="never" color="accent">
+            <textarea matInput
+                cdkTextareaAutosize
+                rows="1"
+                placeholder="editCommentTitle"
+                formControlName="editCommentControl"
+                maxlength="commentMax" 
+                [errorStateMatcher]="formErrorStateMatcher"
+            >
+            </textarea>
+            <mat-error class="mat-error"
+                *ngIf="formControls.invalid"
+            >
+                {{formControlModel.errorMessage}}
+            </mat-error>
+        </mat-form-field>
+        <app-mat-dialog-actions
+            [actionLabel]="'Save'"
+            [actionDisabled]="!editCommentForm.valid"
+            (clickCancel)="onClickCancel()"
+            (clickAction)="onClickAction()"
+        >
+
+        </app-mat-dialog-actions>
+    </form>  
+</span>

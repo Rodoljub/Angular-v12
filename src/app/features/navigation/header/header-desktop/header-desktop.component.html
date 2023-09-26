@@ -1,0 +1,31 @@
+<!-- <ng-container *ngIf="userAuthenticated !== undefined"> -->
+	<ng-container *ngIf="userAuthenticated">
+		<app-navigation-label
+			[navigationLabel]="homeNavigationLabel"
+			[active]="homeActive"
+			(click)="navigateTo(this.homePath)"
+		>
+		</app-navigation-label>
+	
+		<app-navigation-label
+			[navigationLabel]="favouritesNavigationLabel"
+			[active]="favourivesActive"
+			(click)="navigateTo(this.favouritesPath)"
+		>
+		</app-navigation-label>
+	
+		<app-navigation-label
+			[navigationLabel]="portfolioNavigationLabel"
+			[active]="portfolioActive"
+			(click)="navigateTo(this.portfolioPath)"
+		>
+		</app-navigation-label>
+	</ng-container>
+	
+	<ng-container *ngIf="!userAuthenticated || userAuthenticated === undefined">
+		<app-header-auth></app-header-auth>
+	</ng-container>
+	
+<!-- </ng-container> -->
+
+

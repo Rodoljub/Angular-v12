@@ -1,0 +1,18 @@
+.divider-or-wrap{
+    display: flex;
+    max-width: 500px;
+    margin: 16px auto;
+    justify-content: center;
+}
+
+.divider-or{
+    align-self: center;
+    background: rgba(0, 0, 0, 0.12);
+    width: 40%;
+    height: 1px;
+}
+
+.or{
+    padding: 0 16px;
+}
+

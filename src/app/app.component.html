@@ -1,0 +1,63 @@
+<div [class]="themeClass" id="app-wrapper" >
+    <!-- <app-main-spinner></app-main-spinner> -->
+    <router-outlet name="a"></router-outlet>
+
+    
+    <div  class="router-outlet-wrapper"
+
+        [@sidenavTranslateYAnimationTrigger]="sidenavTranslateYAnimationState"
+    >
+    <!-- appResize -->
+        <div  class="router-outlet" id="router-outlet">
+
+            <app-progress-spinner *ngIf="mainProgressSpinner && !mainSpinner" 
+                ngClass="app-loading {{mainProgressSpinnerBacgroundClass}}" 
+                (click)="$event.stopPropagation()"
+            >
+            </app-progress-spinner>
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <ng-container *ngIf="!mainSpinner && !guest"> 
+        <app-header
+        appSideNavContainer
+        (changeHeaderHeight)="onChangeHeaderHeight($event)"
+            appResize
+            #headerToolbar class="app-header"
+            [userAuthenticated]="userAuthenticated">
+        </app-header>
+
+        
+        <div *ngIf="mainProgressBar" app-progress-bar
+            [progressBarType]="mainProgressBarType">
+        </div>
+    </ng-container>
+    <!-- <button *ngIf="!appUpload" mat-fab class="main-upload-button" (click)="openUpload($event)">
+        <mat-icon svgIcon="upload">
+
+        </mat-icon>
+    </button> -->
+
+
+    
+    <ng-container *ngIf="isBrowser">
+        <app-recaptcha></app-recaptcha>
+    </ng-container>
+    
+    <router-outlet name="auth"></router-outlet>
+    <ng-container *ngIf="!mainSpinner"> 
+        <app-upload *ngIf="appUpload"
+            [@sidenavMenuAnimationTrigger]="sidenavUploadAnimationState"
+            [itemViewModel]="itemViewModel">
+        </app-upload>
+
+        <app-footer #footerToolbar ></app-footer>   
+
+        <app-snack-bar></app-snack-bar>
+        <app-coockies-notice *ngIf="coockiesNotice"
+        id="cookie-notice"
+        (coockieNotice)="onCoockieNotice()"
+        ></app-coockies-notice>
+    </ng-container>
+</div>

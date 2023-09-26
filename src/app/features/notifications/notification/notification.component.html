@@ -1,0 +1,22 @@
+
+<div class="notification-wrap">
+    <div class="notif-img-wrap"  (click)="clickOnNotification()">
+        <img ngClass="notification-img"              
+        alt=""
+        appImagePreloader            
+        [attr.src]=''
+        [imagePath]="userImage"
+        [isHeaderProfileImg]="true"
+/>
+
+    </div>
+    <div class="notification-body"  (click)="clickOnNotification()">
+        <div class="notification-message">
+            {{notificationMessage}}
+        </div>
+        <div class="notification-date">
+            {{notificationDate  | dateFromNow}}
+        </div>
+    </div>
+    <mat-icon class="notification-delete" (click)="deleteNotification($event)" svgIcon="close"></mat-icon>
+</div>

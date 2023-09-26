@@ -1,0 +1,143 @@
+@mixin search-tags-form-component($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    app-search-tags-form{
+      p{
+        margin: 20px 0 10px 20px;
+      }
+    }
+
+    .search-tags-form-wrap{
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-left: 2px solid;
+        border-right: 2px solid;
+        border-radius: 10px;
+        padding-right: 4px;
+        width: 100%;
+  
+        .mat-form-field{
+          padding: 0 14px;
+        }
+  
+        .mat-form-field-wrapper{
+          padding-bottom: 0 !important;
+        }
+  
+        .mat-form-field-infix{
+          border-top: 0;
+        }
+  
+        .mat-form-field-underline{
+          display: none;
+          bottom: 1px;
+        }
+  
+        textarea{
+          margin: 6px;
+          min-height: 24px !important;
+          overflow: hidden;
+          flex: 1 1;
+          border: none;
+          background-color: transparent;
+          outline: none;
+          font: inherit;
+  
+          &:focus::-webkit-input-placeholder{
+            color: mat-color($accent, 500);
+          }
+  
+          &:focus:-moz-placeholder{
+            color: mat-color($accent, 500);
+          }
+  
+          &:focus::-moz-placeholder{
+            color: mat-color($accent, 500);
+          }
+  
+          &:focus:-ms-input-placeholder{
+            color: mat-color($accent, 500);
+          }
+  
+          &:focus::placeholder{
+            color: mat-color($accent, 500);
+          }
+        }
+      }
+
+      .header-search-button{
+        cursor: pointer;
+        box-sizing: content-box !important;
+        border-radius: 10px !important;
+        padding: 0 !important;
+        min-width: 36px !important;
+        width: 36px !important;
+        height: 36px !important;
+        align-self: center;
+        border: 2px solid transparent !important;
+        background-color: transparent; 
+        box-shadow: none !important;
+    }
+    
+    .search-button-active{
+        color: whitesmoke !important;
+    }
+    
+    .header-search-button
+    .mat-button-wrapper{
+        padding: 0 !important;
+    }
+    
+    .header-search-button
+    .mat-button-ripple{
+        border-radius: 10px !important;
+    }
+
+    .interests-mob-button-wrap{
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      bottom: 24px;
+      width: 100%;
+      z-index: 50;
+
+      button{
+        margin: 8px;
+      }
+    }
+
+    .guest-close-button{
+      background-color: mat-color($primary, 500) !important;
+    }
+
+    @media only screen and (min-width : 80px) and (max-width : 680px) {
+        .search-mat-form-field{
+            max-height: 100% !important;
+        }
+
+        app-search-tags-form{
+          p{
+            margin: 8px 0 4px 12px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      
+        .search-tags-form-wrap{
+      
+            .mat-form-field{
+              padding: 0 8px !important;
+            }
+            .mat-form-field-infix{
+                min-height: 38px;
+            }
+        }
+
+        .text-align-center{
+          text-align: center;
+        }
+    }
+}

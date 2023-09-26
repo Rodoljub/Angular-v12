@@ -1,0 +1,83 @@
+<!-- <div appHorizontalDragNDrop [paddingDraggable]="paddingDraggable">
+  <div #container ngClass="item-tags-scroll-wrapper" mat-button color="accent">
+      <div #draggable class="item-tags-scroll">
+          <mat-chip-list class="item-card-tag-list">
+              <mat-chip (click)="onUserTagClick($event, item.UrlSegment)" selectable="false" color="accent"
+                  class="item-tag-user">
+                  <span>
+                      <img class="circular-image-avatar-card" alt="" appImagePreloader [attr.src]=''
+                          [imagePath]="item.UserImagePath" [isHeaderProfileImg]="true" />
+                  </span>
+                  {{item.UserName}}
+              </mat-chip>
+                    <mat-chip *ngFor="let tag of item.Tags" color="accent" class="item-card-tags" #tagElement
+                    selectable="false" (mousedown)="onMouseDownTag($event)" (mouseup)="onMouseUpTag($event, tag)"
+                        [selectable]="selectable">
+                        {{tag}}
+                    </mat-chip>
+          </mat-chip-list>
+      </div>
+  </div>
+</div> -->
+
+<div ngClass="item-tag-list-action-wrap{{openListClass}}">
+    <div #tagListElement class="tag-list-element">
+    <mat-chip-list class="item-card-tag-list-wrap" id="mat-chip-list">
+
+        <!-- #region Close Detail Item class="item-detail-close-icon-wrap"  -->
+        <mat-chip *ngIf="showCloseItemModelTag && detailItem" (click)="closeItem($event)"
+            app-tag-hover class="item-detail-close-icon-wrap item-card-tags" 
+         >
+         <!-- color="accent" -->
+            <mat-icon 
+                 svgIcon="closeSearch" 
+            >
+            </mat-icon>
+        </mat-chip>
+        <!-- #endregion Close Detail Item -->
+
+        <!--  && !isTagsOpen -->
+        <mat-chip *ngIf="showMoreTags"  selectable="false"
+          ngClass="tags-show-more-content item-card-tags {{activeShowMoreTagClass}}"
+          (click)="showHideTags()"
+          #showHideTagsElement
+          app-tag-hover
+        >
+            <mat-icon ngClass="{{rotateIconClass}}" svgIcon="detailCaret"></mat-icon>
+        </mat-chip>
+        
+        <mat-chip app-tag-hover  itemprop="author"
+            *ngIf="typeOfItemsList !== portfolioItemList 
+                && typeOfItemsList !== portfolioAnonimous 
+                && item?.UserProfile?.name
+                || (!isMobileView && item?.UserProfile?.name)"
+            (click)="onUserTagClick($event, item?.UserProfile?.urlSegment)" selectable="false" 
+            color="accent"
+            class="item-tag-user item-card-tags"
+        >
+            <span>
+                <img class="circular-image-avatar-card" alt="" appImagePreloader [attr.src]=''
+                    [imagePath]="userImagePath" [isHeaderProfileImg]="true"
+                />
+            </span>
+            {{item?.UserProfile?.name}}
+        </mat-chip>
+
+        <ng-container  *ngFor="let tag of item.Tags; let i = index">
+            <!-- [selectedTags]="selectedTags" -->
+            <app-item-tag 
+                [tag]="tag"
+                [touchDevice]="touchDevice"
+                [disabled]="tagDisabled"
+                [isSelectedTag]="isSelectedTag" 
+            >
+            </app-item-tag>
+        </ng-container>
+        
+    </mat-chip-list>
+   
+    
+    </div>
+
+    
+</div>

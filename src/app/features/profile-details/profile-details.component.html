@@ -1,0 +1,28 @@
+<ng-container *ngIf="!load">
+    <div class="profile-details-image-wrap">
+    <div class="profile-pic text-center">
+        <img alt=""
+            appImagePreloader            
+            [attr.src]=''
+            [imagePath]="userImagePath"
+            (imageLoading)="profileImageLoading = $event"
+            [isHeaderProfileImg]="true"
+        />
+        <div class="icon-spinner-center" *ngIf="profileImageLoading"
+            class="profile-progress-spinner"
+            
+        >
+            <app-dots-loader class="comments-spinner" ></app-dots-loader>
+        </div>
+    </div>
+</div>
+    <div class="profile-details">
+
+        <h4>{{profileDetails?.name}}</h4>
+            
+        <app-profile-details-counters
+            [profileDetails]="profileDetails"
+        >
+        </app-profile-details-counters>
+    </div>
+</ng-container>

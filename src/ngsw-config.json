@@ -1,0 +1,44 @@
+{
+  "index": "/index.html",
+  "assetGroups": [{
+    "name": "Occpy",
+    "installMode": "prefetch",
+    "resources": {
+      "files": [
+        "/favicon.ico",
+        "/index.html",
+        "/*.bundle.css",
+        "/*.bundle.js",
+        "/*.chunk.js",
+        "/common.*.js",
+        "/1.*.js",
+        "/2.*.js",
+       "/runtime.*.js",
+       "/styles.*.css",
+       "/polyfills.*.js",
+       "/main.*.js"
+      ]
+    }
+  }, {
+    "name": "assets",
+    "installMode": "lazy",
+    "updateMode": "prefetch",
+    "resources": {
+      "files": [
+        "/assets/**"
+      ]
+    }
+  }],
+  "dataGroups": [
+    {
+      "name": "from-api",
+      "urls": ["/api/**"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 15,
+        "maxAge": "1h",
+        "timeout": "5s"
+      }
+    }
+  ]
+}

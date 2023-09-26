@@ -1,0 +1,9 @@
+<share-buttons theme="circles-dark" *ngIf="shareLoaded"
+[include]="['copy', 'facebook', 'email', 'messenger', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
+[showIcon]="true"
+[showText]="false"
+url="{{itemUrl}}"
+description="itemDescription"
+twitterAccount="twitterAccount"
+class="pt-5">
+</share-buttons>

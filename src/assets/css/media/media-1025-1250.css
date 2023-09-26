@@ -1,0 +1,38 @@
+/* #region Media Screen (min-width : 1025px) and (max-width : 1250px) */
+
+@media  screen and (min-width : 1025px) and (max-width : 1250px) {
+
+    /* #region Header */
+
+       
+
+        .header-search-wrap {
+            max-width: 648px ;
+            margin-right: 8px;;
+            width: 100% ;
+        }
+
+    /* #endregion Header */
+
+    /* #region List */
+
+        .item-list
+        .container{
+            width: 99.8rem !important;
+        }
+
+    /* #endregion List */
+
+    .app-item-wall{
+        width: 50% !important;
+    }
+    /* #region Footer */
+
+        .footer-section
+        .mat-toolbar-row{
+            max-width: 101rem !important;
+        }
+    /* #endregion Footer */
+}
+
+/* #endregion Media Screen (min-width : 1025px) and (max-width : 1250px) */

@@ -1,0 +1,15 @@
+
+@import '~@angular/material/_theming';
+
+
+$quantum-theme-primary: mat-palette($mat-grey, 700);
+$quantum-theme-accent: mat-palette($mat-pink);
+$quantum-theme-warn: mat-palette($mat-red, 700);
+
+$quantum-theme: mat-light-theme(
+    $quantum-theme-primary,
+    $quantum-theme-accent,
+    $quantum-theme-warn
+);
+
+

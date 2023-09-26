@@ -1,0 +1,16 @@
+<div class="snack-bar-content">
+    <mat-icon class="snack-bar-icon" svgIcon="{{iconType}}" (click)="closeSnackBar('close')"></mat-icon>
+    <span class="snack-bar-spacer"></span>
+    <p appCounter [counter]="counter" [interval]="interval" (value)="count = $event">
+        {{message}} {{count}}
+    </p>
+    
+    <span class="snack-bar-close-spacer"></span>
+
+    <mat-icon class="snack-bar-icon" svgIcon="{{iconAction}}" (click)="closeSnackBar('action')"></mat-icon>
+    
+    <span class="snack-bar-close-spacer"></span>
+
+    <mat-icon class="snack-bar-action" svgIcon="close" (click)="closeSnackBar('close')">           
+    </mat-icon>
+</div>

@@ -1,0 +1,18 @@
+<!-- <ng-container *ngIf="isMatMenuOpen"> -->
+<div class="app-overlay-wrapper"
+    (click)="closeMenu()"
+>
+    <div app-menu-navigation  class="app-menu-content"
+        [userAuthenticated]="userAuthenticated"
+        (closeMenuOutput)="closeMenu()"
+    >
+    </div>
+</div>
+
+<button  
+    mat-fab ngClass="floating-menu-close-button-wrap" 
+    (click)="closeMenu()"
+>
+    <mat-icon svgIcon="closeSearch"></mat-icon>
+</button>
+<!-- </ng-container> -->

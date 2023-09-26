@@ -1,0 +1,42 @@
+<ng-container *ngIf="actionBarShow && userAuthenticated !== undefined">
+<div class="app-search-action-bar header-mobile" *ngIf="!searchActionBar" >
+    <ng-container *ngIf="userAuthenticated">
+        <app-icon-label
+            [svgIcon]="'home'"
+            [label]="homeLabel"
+            [active]="homeActive"
+            (click)="navigateTo(this.homePath)"
+        ></app-icon-label>
+    
+        <app-icon-label
+            [svgIcon]="'favouriteFill'"
+            [label]="favouritesLabel"
+            [active]="favourivesActive"
+            (click)="navigateTo(this.favouritesPath)"
+        ></app-icon-label>
+    
+        <app-icon-label
+            [svgIcon]="'portfolio'"
+            [label]="portfolioLabel"
+            [active]="portfolioActive"
+            (click)="navigateTo(this.portfolioPath)"
+        ></app-icon-label>
+
+        <app-icon-label
+            [svgIcon]="'sidenav'"
+            [label]="menuLabel"
+            (click)="openMenu()"
+        ></app-icon-label>
+    </ng-container>    
+
+    <ng-container *ngIf="!userAuthenticated || userAuthenticated === undefined">
+        <app-header-auth></app-header-auth>
+    </ng-container>
+</div>
+
+<ng-container  *ngIf="searchActionBar">
+    <app-search-action-bar class="app-search-action-bar"
+        [userAuthenticated]="userAuthenticated"
+    ></app-search-action-bar>
+</ng-container>
+</ng-container>

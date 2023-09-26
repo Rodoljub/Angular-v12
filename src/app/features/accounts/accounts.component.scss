@@ -1,0 +1,137 @@
+@mixin accounts-component($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+app-accounts{
+    position: fixed;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 1050;
+    background: rgba(0,0,0,0.8);
+
+    .account-card{
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        overflow: auto;
+        margin: auto;
+        height: fit-content;
+        max-height: 80vh;
+        min-height: unset;
+        margin: auto;
+        width: 450px;
+        padding: 24px 32px;
+        background: white;
+        color: rgba(0, 0, 0, 0.87);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        border: 6px solid transparent;
+        border-radius: 10px;
+        scrollbar-width: thin;
+        scrollbar-color: mat-color($accent) #fff;
+
+        mat-card-title{
+            display: block;
+            margin-bottom: 16px;
+        }
+
+    }
+
+    .account-card h4{ 
+        font-size:24px; 
+        font-weight:bold;
+        font-family: 'open_sansbold';
+        margin-bottom: 20px;
+
+    }
+
+    .account-card::-webkit-scrollbar-thumb {
+        background-color: mat-color($accent);
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;  
+      }
+
+      .account-card::-webkit-scrollbar {
+        width: 16px;
+      }
+
+    .acc-content-opacity{
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.accounts-header{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    top: 0;
+    width: 100%;
+    height: 56px;
+    z-index: 5;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) !important;
+
+    .account-upload-title{
+        width: 100%;
+        text-align: center;
+        margin: 0 0 0 -28px !important;
+    }
+}
+
+.acc-header-close{
+    min-width: 24px !important;
+}
+
+.acc-mob-content{
+    margin-top: 56px !important;
+}
+
+.accounts-close{
+    position: absolute;
+    right: 3%;;
+    top: 16px;
+    z-index: 1002;
+    border: 2px solid;
+    border-radius: 50%;
+    transform: scale(1.2);
+    mat-icon{
+        display: block;
+        margin: auto;
+    }
+}
+
+app-login-iframe{
+    overflow: hidden;
+    display: block;
+    min-height: 80vh;
+}
+
+@media only screen and (max-width : 620px) {
+    .account-card{
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+
+        scrollbar-width: unset !important;
+        scrollbar-color: unset !important;
+    }
+
+    .account-card::-webkit-scrollbar-thumb {
+        background-color: unset !important;
+        border: unset !important;
+        border-radius: unset !important;
+        background-clip: unset !important;  
+    }
+
+    .account-card::-webkit-scrollbar {
+        width: 0 !important;
+    }
+}
+}

@@ -1,0 +1,120 @@
+<!--  (ngSubmit)="updateProfile()" -->
+<form
+    novalidate
+    [formGroup]="profileForm"
+   >
+
+    <!-- #region Image Input && Error -->
+    <input style="display: none;" 
+        id="selectedFile" 
+        type="file" 
+        accept="image/x-png,image/gif,image/jpeg"
+        (change)="fileChangeEvent($event)"
+    />
+    <mat-error *ngIf='formControls && selectedFileControlError' class="mat-error">
+            {{selectedFileControlErrorMessage}}
+    </mat-error>
+    <!-- #endregion Image Input && Error -->
+
+    <!-- #region Profile Image -->
+    <div class="prof-pic-cont text-center">
+
+        <div [hidden]="!showCanvas" class="text-center image-cropper-wrap"
+        >
+            <image-cropper  ngClass="{{pointerNone}} {{displayNone}}"
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="1 / 1"
+                [resizeToWidth]="640"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()"
+            ></image-cropper>
+        </div>
+        <div class="profile-pic text-center" *ngIf="!showCanvas">
+            <img alt=""
+                appImagePreloader   
+                [isHeaderProfileImg]="true"         
+                [attr.src]=''
+                [imagePath]="userImagePath"
+                (imageLoading)="profileImageLoading = $event"
+            />
+            <div class="icon-spinner-center" *ngIf="profileImageLoading"
+                 class="profile-progress-spinner"     
+            >
+                <app-dots-loader class="comments-spinner" ></app-dots-loader>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Profile Image -->
+
+    <!-- #region Edit Button -->
+    <span>
+
+        <div class="profile-change-image text-center" >
+            <app-navigation-label
+            *ngIf="!isImageAnalyzing"
+                [navigationLabel]="'Change Image'"
+                [disabled]="hideEditButton"
+                [active]="false"
+                (click)="onClickChangeImage()"
+            >
+            </app-navigation-label>
+            <div class="analyzing-img-title" *ngIf="isImageAnalyzing">
+                <p>{{analyzingTitle}}{{imageTitle}}</p>
+            </div>
+            <app-image-analyzing  class="prfile-analyz-img"
+                *ngIf="isImageAnalyzing"
+                [imageModel]="analyzingImageModel"
+            >
+            </app-image-analyzing>
+        </div>
+        <!-- <div class="profile-edit-icon text-center" >
+            <button [disabled]="hideEditButton" type="button" 
+                    onclick="document.getElementById('selectedFile').click();" 
+                    mat-mini-fab  color="accent" class="edit-button"
+            >
+                <mat-icon svgIcon="edit"></mat-icon>        
+            </button>
+        </div> -->
+    </span>
+    <!-- #endregion Edit Button -->
+
+    <!-- #region Profile Name Input && Error -->
+    <mat-form-field class="register-input-name profile-form" color="accent" >
+        <input matInput  
+            formControlName = "nameControl"          
+            type="text"
+            maxlength="26"          
+            placeholder="Name" 
+            [errorStateMatcher]="formErrorStateMatcher" 
+            (keyup)="onNameChanged()" (paste)="onNameChanged()" 
+        />
+        <mat-error *ngIf='formControls && nameControlError'  class="mat-error">
+                {{nameControlErrorMessage}}
+        </mat-error>
+    </mat-form-field>
+    <!-- #endregion Profile Name Input && Error -->
+
+    <!-- #region Save Submit Form Button -->
+    <div>
+        <!-- type="submit"  -->
+        <button mat-raised-button color="accent" 
+            class="account-upload-qq-button" 
+            (click)="updateProfile()"
+            [disabled]="save === false || nameControlError"
+        >
+            Save
+        </button>
+    </div>
+    <!-- #endregion Save Submit Form Button -->
+</form>
+
+<button  (click)="onChangeYourPassword('changepassword')" [disabled]="hideEditButton" mat-button color="accent">
+        Change your password
+</button> 
+ 
+
+

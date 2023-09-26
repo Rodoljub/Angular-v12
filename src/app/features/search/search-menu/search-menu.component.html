@@ -1,0 +1,30 @@
+
+<ng-container *ngIf="searchMenuDisabled  && saveSearchResults && saveSearchResults.length > 0">
+    <button 
+        *ngIf="loadSavedSearch"
+        mat-button class="header-button"
+        #searchMenuTrigger="matMenuTrigger"
+        [matMenuTriggerFor]="searchMenu" 
+        (onMenuOpen)="onMenuOpen()"
+    >
+        <mat-icon svgIcon="caret" ></mat-icon>
+    </button>
+    <!-- [disabled]="searchMenuDisabled" -->
+
+    <!--         xPosition="before" -->
+    <mat-menu 
+        id="searchMenu"
+        class="header-menu header-profile-switch-nested-menu-arrows search-menu" 
+        #searchMenu="matMenu" 
+        [overlapTrigger]="false"
+        xPosition="before"
+        (closed)="onMenuClose()"
+    >
+
+    <app-saved-searches
+        [saveSearchResults]="saveSearchResults"
+        
+    >
+    </app-saved-searches>
+    </mat-menu>
+</ng-container>

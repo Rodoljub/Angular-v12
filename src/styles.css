@@ -1,0 +1,13 @@
+
+/* @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+@import './assets/css/material-override.css';
+@import './assets/css/media/media-80-480.css';
+@import './assets/css/media/media-481-568.css';
+@import './assets/css/media/media-569-640.css';
+@import './assets/css/media/media-641-961.css';
+@import './assets/css/media/media-962-991.css';
+@import './assets/css/media/media-992-1024.css';
+@import './assets/css/media/media-1025-1250.css';
+@import './assets/css/media/media-1251-1366.css';
+@import './assets/css/media/media-1367-1510.css';
+

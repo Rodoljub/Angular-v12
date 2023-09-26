@@ -1,0 +1,148 @@
+
+<div app-saved-search-directive *ngIf="isMobileView" 
+[saveSearchResult]="saveSearchResult"
+  
+    (setActionType)="onSetActionType($event)"
+>
+<!--   (changeActionType)="actionType = $event" -->
+<!-- (click)="openSavedSearchResalt($event)"  -->
+<!-- matRipple -->
+    <div class="item-card-accordian-div item-card" #overElement 
+          
+    >
+        <mat-icon *ngIf="isMobileView"  svgIcon="verticalLine" class="vertical-lines-icon"></mat-icon>
+        <app-item-tags class="item-tags-wall save-search-tags-mobile"
+            [item]="item"
+            [tagDisabled]="true"
+            [isSelectedTag]="true"
+            [activeShowMoreTagClass]="'upload-tag-chip'"
+        >
+        </app-item-tags>
+
+        <div class="saved-search-action-bar">
+            <p>
+                <!-- <button mat-button color="accent" type="button" > -->
+                    {{saveSearchResult.title}} 
+                <!-- </button> -->
+            </p>
+            <div class="saved-search-action-icon-wrap" *ngIf="!isMobileView">
+                <app-base-button-icon-image 
+                        [matIcon]="true"
+                        [svgIcon]="'edit'"
+                        [iconClass]="actionIconClass"
+                        [tooltip]="editTooltip"
+                        [tooltipPosition]="aboveTooltipPosition"
+                        (clickOnIcon)="saveSearchEdit()"
+                >
+                <!--        (clickOnIcon)="saveSearch()"   [tooltipClass]="viewTooltipClass" -->
+                </app-base-button-icon-image>
+                <app-base-button-icon-image
+                        [matIcon]="true"
+                        [svgIcon]="'delete'"
+                        [iconClass]="actionIconClass"
+                        [tooltip]="deleteTooltip"
+                        [tooltipPosition]="aboveTooltipPosition"
+                        (clickOnIcon)="saveSearchDelete($event)" 
+                >
+
+                </app-base-button-icon-image>
+                <app-base-button-icon-image
+                        [matIcon]="true"
+                        [svgIcon]="'share'"
+                        [iconClass]="actionIconClass"
+                        [tooltip]="shareTooltip"
+                        [tooltipPosition]="aboveTooltipPosition"              
+                >
+                </app-base-button-icon-image>
+            </div>
+        </div>
+       
+    </div>
+
+
+
+    <div class="saved-search-action-icon-wrap-behind"  
+        #underElement
+    >
+        <!-- *ngIf="actionType === actionDeleteType" -->
+        <app-base-button-icon-image 
+                [matIcon]="true"
+                [svgIcon]="'delete'"
+                [iconClass]="actionIconClass"
+                [tooltip]="deleteTooltip"
+                [tooltipPosition]="aboveTooltipPosition"
+                (clickOnIcon)="saveSearchDelete()"      
+        >
+        </app-base-button-icon-image>
+        
+        <!--  *ngIf="actionType === actionEditType" -->
+        <app-base-button-icon-image
+                [matIcon]="true"
+                [svgIcon]="'edit'"
+                [iconClass]="actionIconClass"
+                [tooltip]="editTooltip"
+                [tooltipPosition]="aboveTooltipPosition"
+                (clickOnIcon)="saveSearchEdit()"
+
+        >
+        </app-base-button-icon-image>
+
+        <app-base-button-icon-image
+            [matIcon]="true"
+            [svgIcon]="'share'"
+            [iconClass]="actionIconClass"
+            [tooltip]="shareTooltip"
+            [tooltipPosition]="aboveTooltipPosition"
+        >
+        </app-base-button-icon-image>
+    </div>
+</div>
+<!-- matRipple -->
+<div class="item-card-accordian-div item-card" #overElement  *ngIf="!isMobileView" 
+      (click)="openSavedSearchResalt()" 
+>
+    <app-item-tags class="item-tags-wall"
+        [item]="item"
+        [tagDisabled]="true"
+        [isSelectedTag]="true"
+        [activeShowMoreTagClass]="'upload-tag-chip'"
+    >
+    </app-item-tags>
+    <div class="saved-search-action-bar">
+        <p>
+            <!-- <button mat-button color="accent" type="button" > -->
+                {{saveSearchResult.title}} 
+            <!-- </button> -->
+        </p>
+        <div class="saved-search-action-icon-wrap" *ngIf="!isMobileView">
+            <app-base-button-icon-image 
+                    [matIcon]="true"
+                    [svgIcon]="'edit'"
+                    [iconClass]="actionIconClass"
+                    [tooltip]="editTooltip"
+                    [tooltipPosition]="aboveTooltipPosition"
+                    (clickOnIcon)="saveSearchEdit()"
+                    
+            >
+            <!--        (clickOnIcon)="saveSearch()"    [tooltipClass]="viewTooltipClass" -->
+            </app-base-button-icon-image>
+            <app-base-button-icon-image
+                    [matIcon]="true"
+                    [svgIcon]="'delete'"
+                    [iconClass]="actionIconClass"
+                    [tooltip]="deleteTooltip"
+                    [tooltipPosition]="aboveTooltipPosition"
+                    (clickOnIcon)="saveSearchDelete($event)"
+            >
+
+            </app-base-button-icon-image>
+            <app-base-button-icon-image
+                    [matIcon]="true"
+                    [svgIcon]="'share'"
+                    [iconClass]="actionIconClass"
+                    [tooltip]="shareTooltip"
+                    [tooltipPosition]="aboveTooltipPosition"           
+            >
+            </app-base-button-icon-image>
+        </div>
+    </div>

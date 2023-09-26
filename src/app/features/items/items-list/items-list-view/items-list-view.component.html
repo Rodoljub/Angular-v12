@@ -1,0 +1,24 @@
+
+
+
+<div  *ngIf="!messageCard"  class="item-list"  #itemListElement>
+
+    <div *ngIf="itemLoad" >
+        <div ngClass="app-item{{appItemClass}}" #appItemElement id="wallItemColumnElement"
+            [style]="style" 
+            app-item *ngFor="let item of items; let i=index; trackBy: trackByItems" 
+            [userAuthenticated]="userAuthenticated"
+            [item]="item"
+            [translate]="item.TranslateY"
+            [changingSize]="changingSize"
+            [index]="i"       
+            [typeOfItemsList]="typeOfItemsList"
+            [gridColumnWidth]="gridColumnWidth"
+            [currentViewType]="currentViewType"
+            (openModalItemEmitter)="onOpenModalItemEmitter($event)"
+            (deleteEntity)="setDelete($event)"
+            (removeFavouritesItem)="onRemoveFavouritesItem($event)"
+        >
+        </div>			
+    </div>
+</div>

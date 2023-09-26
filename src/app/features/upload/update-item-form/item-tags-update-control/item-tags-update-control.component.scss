@@ -1,0 +1,75 @@
+@mixin item-tags-update-control-component($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+
+
+    .upload-tag-chip.disable{
+      background-color: rgba(0, 0, 0, 0.38) !important;
+    }
+    
+
+    .upload-tags-form-field{
+
+      .mat-form-field-infix{
+        padding-top: 8px !important;
+        padding-bottom: 0 !important;
+      }
+      textarea{
+          margin: 6px;
+          padding: 4px;
+          min-height: 24px !important;
+          overflow: hidden;
+          flex: 1 1;
+          border: none;
+          background-color: transparent;
+          outline: none;
+          font: inherit;
+          vertical-align: middle;
+      
+          &:focus::-webkit-input-placeholder{
+            color: mat-color($accent, 500);
+          }
+      
+          &:focus:-moz-placeholder{
+            color: mat-color($accent, 500);
+          }
+      
+          &:focus::-moz-placeholder{
+            color: mat-color($accent, 500);
+          }
+      
+          &:focus:-ms-input-placeholder{
+            color: mat-color($accent, 500);
+          }
+      
+          &:focus::placeholder{
+            color: mat-color($accent, 500);
+          }
+      }
+
+      .textarea-disable::placeholder{
+        color: rgba(0, 0, 0, 0.38) !important;
+
+      }
+
+      .mat-form-field-underline.disable{
+        background-color: rgba(0, 0, 0, 0.38) !important;
+      }
+
+      .mat-form-field-label.disable{
+        color: rgba(0, 0, 0, 0.38) !important;
+      }
+
+    }
+
+    @media only screen and (min-width: 80) and (max-width: 699) {
+      .upload-tags-form-field{
+        margin-top: 24px !important;
+      }
+    }
+    
+}
+
+

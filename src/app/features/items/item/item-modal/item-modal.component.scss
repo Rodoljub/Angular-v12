@@ -1,0 +1,86 @@
+app-item-modal{
+    display: block;
+    height: 100%;
+
+    .item-file{
+        height: 100% !important; 
+    }
+
+    .item-hover-tags-background, .item-hover-background{
+        border-radius: 0 !important;
+        background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+.modal-item-image{
+    position: relative;
+    display: block;
+    /*width: 60%;*/
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    .item-color-background{
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.item-modal-action-wrap{
+   /* width: 40%;
+    position: relative;
+*/
+    .comment-card{
+        background-color: white;
+        border-radius: 0px !important;
+        height: 100%;
+        overflow: auto;
+        padding: 55px 10px;
+    }
+}
+
+.item-modal-action-wrap{
+    width: 100% !important;
+    position: initial !important;
+
+    .comment-card{
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+
+.comment-arrow-back-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    background: white;
+    // box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) !important;
+}
+
+.comment-arrow-back{
+    margin: 8px;
+    z-index: 5;
+}
+
+
+@media only screen and (min-width : 200px) and (max-width : 1025px) {
+    .modal-item-image{
+        width: 100% !important;
+    }
+
+    .item-modal-action-wrap{
+        width: 100% !important;
+        position: initial !important;
+
+        .comment-card{
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<div class="items-modal-list-wrapper" *ngIf="appItem">
+    <!-- *ngIf="showIcons && showCloseIcon" -->
+    <button 
+        mat-button class="header-button ac bac items-modal-list-close" (click)="clickCloseItem()"
+    >
+        <mat-icon  
+            svgIcon="close" 
+        >
+        </mat-icon>
+    </button>
+
+    <app-item-modal
+                    ngClass="col-md-6 app-item-carousel" 
+                    id="app-item-detail"
+                    [userAuthenticated]="userAuthenticated"
+                    [isMobileView]="mobileView"
+                    [typeOfItemsList]="typeOfItemsList"
+                    [item]="item"
+               
+                    [showDetails]="showDetails"
+                    [clientScreenWide]="clientScreenWide"
+                   
+                    (closeItemEmit)="clickCloseItem()"
+                >
+                </app-item-modal>
+                <!--  (deleteEntity)="setDeleteItem($event)"
+                    (hideDetails)="hideDetails()" -->
+</div>

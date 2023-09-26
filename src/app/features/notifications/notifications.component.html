@@ -1,0 +1,35 @@
+
+<ng-container>
+
+    <button   
+        mat-button class="header-button"
+        #notificationsMenuTrigger="matMenuTrigger"
+        [matMenuTriggerFor]="notificationsMenu" 
+        (onMenuOpen)="onMenuOpen()"
+
+    >
+        <mat-icon svgIcon="notifications" ></mat-icon>
+        <span *ngIf="notificationsActive" class="notifications-active"></span>
+    </button>
+
+    <mat-menu 
+        id="notificationMenu"
+        class="header-menu header-profile-switch-nested-menu-arrows notifications-menu" 
+        #notificationsMenu="matMenu" 
+        [overlapTrigger]="false"
+        xPosition="before"
+        (closed)="onMenuClose()"
+    >
+
+    <app-notification-list
+        [notifications]="notificationsResults"     
+    >
+    </app-notification-list>
+    </mat-menu>
+</ng-container>
+
+<app-signalr
+    [notifications]="notificationsResults"
+    (newNotifications)="onNewNotifications($event)"
+    
+></app-signalr>

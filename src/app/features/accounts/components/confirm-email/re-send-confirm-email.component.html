@@ -1,0 +1,65 @@
+<!-- <mat-card-content [@reset]='state'> -->
+        <div *ngIf="success"  class="container-centar">
+                <div class="message-card">
+            <p>Confirmation email has bean successfully sent. &nbsp;</p>
+            <p> Please check your email Inbox :)</p>
+            </div>
+        </div>
+
+    <div *ngIf="!success" > 
+        <!--   <mat-card class="message-card">   class="container-centar"-->
+        <div>
+            <!-- <h4>Confirm your Email</h4> -->
+            <p>Please check your inbox for a confirmation email.</p>
+            <p> Click the button 'Confirm Email' in the email to confirm your email address.</p>
+                <h2></h2>
+                <!-- , you can resend confirmation email. -->
+                <p>If you can't find confirmation email
+                <a *ngIf="!inputOpen" mat-button color="accent" (click)="openInput()"> 
+                    click here
+                </a>
+            </p>
+            <!-- <button *ngIf="!inputOpen" mat-raised-button color="accent" 
+                    class="account-upload-qq-button"
+                    (click)="openInput()"
+                    >
+                    Click here
+            </button>    -->
+        </div>
+        <!--   </mat-card> -->
+    </div>
+
+
+    
+    <div *ngIf="!success && inputOpen">
+        <form 
+        [formGroup]="reSendConfirmEmailForm"
+        (ngSubmit)="validate($event)"
+        (keyup.enter)="reSendConfirmEmailForm.valid"
+        ><!--(keyup.enter)="validate($event)" -->
+            <mat-form-field class="re-send-input-email" color="accent">
+                <input matInput 
+                    id="emailControl"
+                    formControlName="emailControl"
+                    #emailInput 
+                    name="Email" 
+                    type="email"
+                    placeholder="Your Email Address" 
+                    [errorStateMatcher]="formErrorStateMatcher"/>
+                    
+                    <mat-error  *ngIf="formControls && emailControlError" class="mat-error">
+                        {{emailControlErrorMessage}}
+                    </mat-error>
+
+            </mat-form-field>
+            <button mat-raised-button color="accent" type="submit" 
+                    class="account-upload-qq-button"
+                    [disabled]="!reSendConfirmEmailForm.valid">
+                    Send your email
+            </button>
+        </form>
+    </div>
+<!-- </mat-card-content> -->
+
+
+

@@ -1,0 +1,23 @@
+
+
+.message-contact-input{
+    width: 100% !important;
+    margin-bottom: 4px !important;
+    margin-top: 4px !important;
+    font-family: 'open_sansregular';
+    font-size: 16px;
+    textarea{
+        padding: 0;
+    }
+
+    .mat-right{
+        white-space: nowrap;
+    }
+}
+
+.contact-form{
+    button{
+        min-width: 120px !important;
+        margin-top: 24px !important;
+    }
+}

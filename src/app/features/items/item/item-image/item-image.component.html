@@ -1,0 +1,85 @@
+
+
+<div    
+        id="item-image-loading-color" *ngIf="(itemImageLoading && this.currentView !== carouselView) || this.currentView === carouselView"
+        ngClass="item-color-background item-image-loading-color {{itemImageBackgroundRelative}}"  #colorElement
+        (touchstart)="doubleTapLike($event)"
+        (touchmove)="doubleTapMove()"
+        (touchend)="doubleTapEnd()"
+        (click)="openCarouselItem()"
+>  
+</div>
+<div class="like-animation-item-wrap" *ngIf="isLikeAnimation">
+<svg height="24px" width="24px" ngClass="like-animation-item {{likeAnimationItemShow}}">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg> 
+</div>
+
+<!-- 
+<picture
+(oncontextmenu)="onContextMenu($event)">
+<source srcset="{{webPImagePath}}" type="image/webp"
+(oncontextmenu)="onContextMenu($event)">
+<img    id="item-image" style="display:none"
+        draggable="false" hidden="{{itemImageLoading}}" 
+        (ondragstart)="onDragStart($event)" 
+        ngClass="item-file {{itemImageBackgroundRelative}}" 
+
+        #imageElement
+        (oncontextmenu)="onContextMenu($event)"
+        (click)="onClick($event)"
+        (mousedown)="onMouseDown($event)"
+        (mouseup)="onMouseUp($event)"
+        (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
+        (touchend)="onTouchEnd($event)"
+        alt=""
+        
+        appImagePreloader 
+        [attr.src]='' [imagePath]="itemFilePath"
+        (imageLoading)="onImageLoading($event)"
+/>
+</picture> -->
+<!-- <button class="flip-img-button" *ngIf="isDescription"
+    mat-fab
+    (click)="flipImageDesc()">
+    <mat-icon svgIcon="{{svgIconFlip}}"></mat-icon>
+
+</button> -->
+
+<div ngClass="item-img-flip-wrap {{iifwClass}}">
+<img    itemprop="contentUrl"
+        id="item-image" style="display:none"
+        draggable="false" hidden="{{itemImageLoading}}" 
+        (ondragstart)="onDragStart($event)" 
+        ngClass="item-file {{itemImageBackgroundRelative}}" 
+
+        #imageElement
+        (oncontextmenu)="onContextMenu($event)"
+        (click)="onClick($event)"
+        (mousedown)="onMouseDown($event)"
+        (mouseup)="onMouseUp($event)"
+        (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
+        (touchend)="onTouchEnd($event)"
+        alt="{{altImage}}"
+        
+        appImagePreloader 
+        [attr.src]='' [imagePath]="itemFilePath"
+        (imageLoading)="onImageLoading($event)"
+/>
+
+<div  #imageElement class="item-image-flip item-file {{itemImageBackgroundRelative}}"
+
+
+>
+<p>{{description}}</p>
+</div>
+
+</div>
+<!-- 
+<div  class="item-caption-wrap" *ngIf="isItemCaption">
+        <h1 itemprop="description" class="item-caption">
+                {{itemCaption}}
+        </h1>
+</div> -->

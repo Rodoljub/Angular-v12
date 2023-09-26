@@ -1,0 +1,27 @@
+
+
+<app-floating-menu-button
+    [@menuFloatingAnimationTrigger]="menuFloatingAnimationState"
+    class="floating-menu-button-wrap"
+    [isButtonActiveInactive]="false"
+    [buttonActive]="true"
+    [buttonClass]="'floating-menu-button'"
+    [buttonInactiveClass]="''"
+    [buttonTooltip]="menuButtonTooltip"
+    [buttonTooltipClass]="buttonTooltipClass" 
+    [buttonTooltipPosition]="buttonTooltipPosition"
+    [svgIcon]="menuIcon"
+    (clickOnbutton)="toggleMenu()"
+    (showMenuButton)="menuFloatingAnimationState = $event"
+>
+</app-floating-menu-button>
+
+<div class="app-overlay-wrapper" *ngIf="isMatMenuOpen"
+    (click)="closeMenu()"
+>
+    <div app-menu-navigation  *ngIf="isMatMenuOpen" class="app-menu-content"
+        [userAuthenticated]="userAuthenticated"
+        (closeMenuOutput)="closeMenu()"
+    >
+    </div>
+</div>

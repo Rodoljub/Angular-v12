@@ -1,0 +1,13 @@
+
+
+<ng-container *ngIf="isImages">
+    <div class="analyzing-img-title">
+        <p>{{analyzingTitle}}{{imageImagesTitle}}</p>
+    </div>
+    <div class="images-analyzing-wrap">
+        <app-image-analyzing *ngFor="let image of analyzingImages"
+            [imageModel]="image"
+        ></app-image-analyzing>
+    </div>
+</ng-container>
+

@@ -1,0 +1,106 @@
+
+<div *ngIf="!relatedItemId">
+
+<!-- #region Message Card -->
+	<div class="label-list" *ngIf="noSearchResult">
+		<mat-card class="no-search-result-card">
+			<div class="powered">
+				<p>No search results found for  </p> <mat-card-title>"{{labelList}}"</mat-card-title> 
+			</div>
+		</mat-card>
+	</div>
+
+	<app-message-card *ngIf="messageCard"
+		[messageCard]="messageCard"
+		[messageTitle]="messageTitle"
+		[messageContent]="messageContent"
+		[messageActionLable]="messageActionLable"
+		[route]="messageCardActionRooute"
+	>
+	</app-message-card>
+<!-- #endregion Message Card -->
+
+	<app-profile-details [hidden]="profileDetailsHidden"
+		*ngIf="typeOfItemsList === portfolioList || typeOfItemsList === portfolioAnonymous"
+		[urlSegment]="urlSegment"
+	>
+	</app-profile-details>
+
+<!-- #region Items List (scroll)="onWindowScroll($event)" -->
+	<div  *ngIf="!messageCard"  class="item-list"  #itemListElement>
+
+		<div *ngIf="itemLoad" >
+			<!-- 
+				[translateY]="item.TranslateY"  #appItemElement   #wallItemColumnElement-->
+			<div ngClass="app-item{{appItemClass}}" #appItemElement id="wallItemColumnElement"
+				[style]="style" 
+				app-item *ngFor="let item of items; let i=index; trackBy: trackByItems" 
+				[userAuthenticated]="userAuthenticated"
+				[item]="item"
+				[translate]="item.TranslateY"
+				[changingSize]="changingSize"
+				[index]="i"
+			
+				[typeOfItemsList]="typeOfItemsList"
+				[gridColumnWidth]="gridColumnWidth"
+				[currentViewType]="currentViewType"
+
+				(openModalItemEmitter)="onOpenModalItemEmitter($event)"
+				(deleteEntity)="setDelete($event)"
+				(removeFavouritesItem)="onRemoveFavouritesItem($event)"
+			>
+			<!-- 	[itemsList]="items" -->
+			</div>			
+		</div>
+
+		<!-- #region Grid List View -->
+		<!-- <div *ngIf="itemLoad && currentViewType == gridViewType">
+			<div ngClass="app-item{{appItemClass}}" #appItemElement
+				[style]="style" 
+				app-item *ngFor="let item of items; let i=index; trackBy: trackByItems" 
+				[item]="item"
+				[index]="i"
+				[itemsList]="items"
+				[typeOfItemsList]="typeOfItemsList"
+				[gridColumnWidth]="gridColumnWidth"
+				[currentViewType]="currentViewType"
+				[isMobileView]="mobileView"
+				(deleteEntity)="setDelete($event)"
+				(removeFavouritesItem)="onRemoveFavouritesItem($event)"
+			>
+			</div>			
+		</div> -->
+		<!-- #endregion Grid List View -->
+
+		<!-- #region Wall List View -->
+		<!-- <div class="container" *ngIf="itemLoad && currentViewType == wallViewType">
+				<div class="col-md-3"></div>
+
+				<div class="col-md-6" #wallItemColumnElement id="wallItemColumnElement">
+					<div 
+						ngClass="app-item{{appItemClass}}" #appItemElement
+						[style]="style" 
+						app-item *ngFor="let item of items; trackBy: trackByItems" 
+						[item]="item"
+						[currentViewType]="currentViewType"
+						[typeOfItemsList]="typeOfItemsList"
+						[isMobileView]="mobileView"
+						[itemWallCardWidth]="itemWallCardWidth"
+						(deleteEntity)="setDelete($event)"
+						(removeFavouritesItem)="onRemoveFavouritesItem($event)"
+					>
+					</div>
+				</div>
+
+				<div class="col-md-3"></div>
+		</div> -->
+		<!-- #endregion Wall List View -->
+
+	</div>
+	
+	<div class="related-spinner-div">
+		<app-dots-loader *ngIf="relatedSpinner" class="comments-spinner" ></app-dots-loader>
+	</div>
+<!-- #endregion Items List -->
+
+</div>

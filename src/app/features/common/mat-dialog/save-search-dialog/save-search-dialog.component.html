@@ -1,0 +1,29 @@
+<span>
+    <h4>{{saveSearchTitle}}</h4>
+    <form [formGroup]="saveSearchForm">
+        <mat-form-field class="save-search-dialog-input" floatLabel="never" color="accent">
+            <textarea matInput
+                cdkTextareaAutosize
+                rows="1"
+                placeholder="Name"
+                formControlName="titleControl"
+                maxlength="25" 
+                [errorStateMatcher]="formErrorStateMatcher"
+            >
+            </textarea>
+            <mat-error class="mat-error"
+                *ngIf="formControls && formControls.invalid"
+            >
+                {{formControlModel.errorMessage}}
+            </mat-error>
+        </mat-form-field>
+        <app-mat-dialog-actions
+            [actionLabel]="'Save'"
+            [actionDisabled]="!saveSearchForm.valid"
+            (clickCancel)="onClickCancel()"
+            (clickAction)="onClickAction()"
+        >
+
+        </app-mat-dialog-actions>
+    </form>  
+</span>

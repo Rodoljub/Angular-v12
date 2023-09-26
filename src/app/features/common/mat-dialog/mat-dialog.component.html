@@ -1,0 +1,35 @@
+
+
+
+<app-save-search-dialog *ngIf="dialogType === saveSearchDialogType"
+  (cancelClick)="cancelClick()"
+  (actionClick)="saveSearch($event)"
+>
+</app-save-search-dialog>
+
+<app-edit-comment-dialog *ngIf="dialogType === editCommentDialogType"
+  [comment]="dialogData.comment"
+  (cancelClick)="cancelClick()"
+></app-edit-comment-dialog>
+
+<!-- class="dialog-menu" -->
+<div  *ngIf="dialogType === entityDialogType">
+    <!-- <h4>{{deleteOrReportTitle}}</h4> -->
+  <app-mat-dialog-actions
+    [isEdit]="isEdit"
+    [itemOwner]="dialogData.entityOwner"
+    [actionLabel]="deleteOrReportLable"
+    [actionDisabled]="false"
+    (clickCancel)="cancelClick()"
+    (clickAction)="deleteOrReport()"
+    (clickEdit)="editItem()"
+  >
+
+  </app-mat-dialog-actions>
+</div>
+
+<app-report-dialog *ngIf="dialogType === reportDialogType"
+  [dialogData]="dialogData"
+  (onCancelClick)="cancelClick()"
+>
+</app-report-dialog>

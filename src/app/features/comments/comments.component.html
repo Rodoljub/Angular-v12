@@ -1,0 +1,67 @@
+
+<!-- <div class="detail-comment-separator"></div> -->
+  <mat-card-header>
+
+    <!-- #region Comments Action Menu -->
+
+      <!-- <mat-card-title *ngIf="commentsCount !== 0" class="comments-count"> 
+        {{commentsCount}} Comments 
+        <button mat-icon-button [matMenuTriggerFor]="sortMenu">
+          <mat-icon svgIcon="sort"></mat-icon>
+          Sort
+        </button>
+        <mat-menu #sortMenu="matMenu">
+            
+        </mat-menu> 
+      </mat-card-title> -->
+
+    <!-- #endregion Comments Action Menu -->
+    
+    <!-- #region Add Comment Form -->
+    <mat-card-title class="comment-heaader-title" *ngIf="!sendComment">
+
+      <!-- <span class="add-comment-image-wrap"> -->
+
+        <img  class="add-comment-circular-image" 
+              alt=""
+              appImagePreloader            
+              [attr.src]=''
+              [imagePath]="userImagePath"
+              [isHeaderProfileImg]="true"
+        />
+
+      <!-- </span> -->
+
+        <app-comment-form
+          [userAuthenticated]="userAuthenticated"
+          [inputValue]="commentInputValue"
+          [inputPlaceholder]="placeholderAddComment"
+          [focusCommentTrigger]='focusCommentTrigger'
+          (clickOnSendIconEmit)="addComment($event)"
+        >
+        </app-comment-form>
+    </mat-card-title>
+    <!-- #endregion Add Comment Form -->
+   
+    <!-- #region Dots Loader -->
+    <mat-card-title class="comment-dots-loader" *ngIf="sendComment">
+        <app-dots-loader class="comments-spinner" ></app-dots-loader>
+    </mat-card-title>
+    <!-- #endregion Dots Loader -->
+
+  </mat-card-header>
+
+
+  <mat-card-content app-comments-list *ngIf="commentsCount !== 0" class="comment-list-content"
+    [userAuthenticated]="userAuthenticated"
+    [itemId]="itemId"
+    [commentType]="true"
+    [comments]="comments"
+    [commentsCount]="commentsCount"
+    [addedComment]="addedComment"
+    [isMobileView]="isMobileView"
+    (onChangeCommentCount)="changeCommentCount($event)"
+    (updatedComments)="onUpdatedComments($event)"
+  >
+  </mat-card-content>
+

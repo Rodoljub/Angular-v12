@@ -1,0 +1,71 @@
+<!-- Contact Form -->
+<form class="contact-form"
+novalidate
+[formGroup]="contactForm"
+(ngSubmit)="validate($event)"
+(keyup.enter)="formKeyupEnter($event)"
+>
+    <mat-form-field class="register-input-name" color="accent">
+        <input matInput 
+        id="nameControl"
+        formControlName="nameControl"
+        type="text"              
+        name="registerName"                             
+        placeholder="Name"
+        maxlength="26"     
+        [errorStateMatcher]="formErrorStateMatcher"      
+        > 
+        <mat-error  *ngIf="formControls && nameControlError" class="mat-error">
+            {{nameControlErrorMessage}}
+        </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="register-input-email" color="accent">
+        <input 
+            matInput 
+            id="emailControl"
+            formControlName="emailControl"
+            type="email"
+            name="email"
+            placeholder="Email" 
+            [errorStateMatcher]="formErrorStateMatcher"
+        />
+        <mat-error  *ngIf="formControls && emailControlError" class="mat-error">
+            {{emailControlErrorMessage}}
+        </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="message-contact-input">
+        <textarea
+        matInput
+        #messageContact formControlName="messageControl" 
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        id="messageControl" Name="message" type="text" placeholder="Message"
+        maxlength="{{messageMaxCharacters}}" [errorStateMatcher]="formErrorStateMatcher"
+        >
+        </textarea>
+        <mat-error *ngIf="messageControl.invalid" class="mat-error">
+            <div>{{messageControlErrorMessage}}</div>
+            <div class="mat-error-end">{{messageContact.value.length}} / {{messageMaxCharacters}}</div>
+        </mat-error>
+        <mat-hint align="start">{{messageHintMessage}}</mat-hint>
+        <!--   *ngIf="!saveImageInfoUploading" -->
+        <mat-hint align="end"
+          
+        >{{messageContact.value.length}} / {{messageMaxCharacters}}</mat-hint>
+    </mat-form-field>
+
+    <!-- </mat-form-field> -->
+
+    <button mat-raised-button color="accent" type="submit"
+            class="account-upload-qq-button"
+            [disabled]="!contactForm.valid"       
+        > 
+        Send
+    </button>
+</form>
+<!-- Register Form -->

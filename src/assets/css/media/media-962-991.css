@@ -1,0 +1,72 @@
+/* #region Media Screen (min-width : 962px) and (max-width : 991px) */
+
+@media only screen and (min-width : 961px) and (max-width : 991px) {
+
+    /* #region Header */
+
+        /* #region Toolbar */
+
+
+
+            .header-search-wrap{
+                margin-right: 8px;;
+            }
+
+        /* #endregion Toolbar */
+
+    /* #endregion Header */
+
+    /* #region List */
+
+        .item-list
+        .container{
+            width: 50rem !important;
+        }
+
+        .col-md-6 {
+            width: 50% !important;
+        }
+
+        /* .item-list
+        .col-md-4:nth-child(3n+1){
+            clear: none !important;
+        }
+
+        .item-list
+        .col-lg-4:nth-child(3n+1){
+            clear: none !important;
+        }
+
+        .item-list
+        .col-md-6:nth-child(2n+1){
+            clear: left !important;
+        }  */
+
+    /* #endregion List */
+
+    /* #region Item */
+
+    .app-item-wall{
+        width: 53% !important;
+    }
+
+    .app-item-carousel{
+        width: 53% !important;
+    }
+
+    .item-card-item-path{
+        width: 80% !important;
+    }
+    /* #endregion Item */
+
+    /* #region Footer */
+        
+        .footer-section
+        .mat-toolbar-row{
+            max-width: 93rem !important;
+        }
+
+    /* #endregion Footer */
+}
+
+/* #endregion Media Screen (min-width : 962px) and (max-width : 991px)*/

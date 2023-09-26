@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /policy
+Disallow: /terms
+
+
+Sitemap: https://www.occpy.com/sitemap.xml

@@ -1,0 +1,89 @@
+<!-- <div class="drop-section"  draggable="false">
+<div class="item-card-accordian-div" 
+        id="item-card-accordian-div"
+                  [routerLink]="['', item.Id]"  (click)="openCarouselItem($event)" -->
+            <!-- [style.transform]="styleTransform"  [ngStyle]="styleTransform" -->
+            <!-- [ngStyle]="{'transform': 'translate(' + itemTranslateX + 'px, ' + itemTranslateY + 'px)'}"
+                appFavouritesListDragNDrop
+                #draggableItem
+                [itemId]="item.Id"
+                [isItemPickedUp]="isItemPickedUp" 
+                [itemIndex]="itemIndex" 
+                draggable="false"
+           
+        >
+    <mat-card class="item-card">
+        <img
+        draggable="false"
+            mat-card-image 
+            ondragstart="return false;"
+            class="item-file"        
+            [routerLink]="['', item.Id]" 
+            alt=""
+                appImagePreloader            
+                [attr.src]=''
+                [imagePath]="item.ItemFile"
+                (imageLoading)="itemImageLoading = $event"
+                /> 
+            <div class="icon-spinner-center" *ngIf="itemImageLoading"
+                app-progress-spinner class="profile-progress-spinner"
+                [isDetailLoader]="true">
+            </div>
+         
+    </mat-card>
+    <mat-card class="item-card-action">
+        <a ngClass="item-card-item-title{{favouriteClass}}"  mat-button color="accent" 
+        [routerLink]="['', item.Id]" >
+        <div>
+            {{item.Title}}
+        </div>
+        </a>
+        <span  class="item-detail-item-favourite-tooltip" 
+            matTooltip="{{appActionIconFavouriteTooltip}}"
+        >
+            <app-action-icon *ngIf="isFavourites" ngClass="detail-favourite{{detailFavouriteClass}}"  
+                [src] = 'favoriteIcon'
+                [count] = 'itemFavouritesCount'
+                [actionIconAction] = 'itemFavouriteInput'
+                [clickActionIconTrigger] = 'clickItemFavouriteTrigger'
+                (hoverActionIcon)="onHoverFavourite($event)"
+                (click)="onClickFavourite($event, item.Id)">
+            </app-action-icon>
+
+            </span>
+
+        <div appHorizontalDragNDrop  
+            [paddingDraggable]="paddingDraggable">
+            <div #container class="item-tags-scroll-wrapper" mat-button color="accent">
+                <div #draggable class="item-tags-scroll">
+                    <mat-chip-list class="item-card-tag-list">
+                    <mat-chip (click)="onUserTagClick($event, item.UrlSegment)" selected="true"
+                        color="{{tagColor}}" class="expansion-panel-header-chip-user">
+                        <span>
+                            <img  class="circular-image-avatar-card" 
+                            alt=""
+									  appImagePreloader            
+										[attr.src]=''
+										[imagePath]="item.UserImage"
+										[isHeaderProfileImg]="true"/>
+                        </span>
+                            {{item.UserName}}
+                    </mat-chip>
+                    <mat-chip 
+                        *ngFor="let tag of item.Tags"
+                        color="{{tagColor}}" 
+                        class="item-card-tags"
+                        selected="true"
+                        (mousedown)="onMouseDownTag($event)"
+                        (mouseup)="onMouseUpTag($event, tag)"
+                        [selectable]="selectable"
+                    >
+                            {{tag}}
+                    </mat-chip>
+                </mat-chip-list> 
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+</div> -->

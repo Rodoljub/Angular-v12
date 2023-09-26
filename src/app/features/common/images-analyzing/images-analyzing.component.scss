@@ -1,0 +1,26 @@
+
+
+
+.images-analyzing-wrap{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+app-image-analyzing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin: 0 4px;
+}
+
+.analyzing-img-title{
+    display: block;
+    width: 100;
+
+    p{
+        margin: 0 auto 8px;
+        width: fit-content;
+    }
+}

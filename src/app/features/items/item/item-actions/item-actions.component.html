@@ -1,0 +1,169 @@
+
+<div class="item-card-action">
+
+  <!-- #region Settings Icon -->
+  <div class="item-settings-icon">
+
+    <app-base-button-icon-image
+      [svgInner]="true"
+      [svgIcon]="settingsIcon"
+      [tooltip]="settingsIconTooltip"
+      [tooltipPosition]="settingsTooltipPosition"
+      [tooltipClass]="settingsTooltipClass"
+      (clickOnIcon)="openItemDialog()"
+    >
+		</app-base-button-icon-image>
+    <!-- <svg #settingsIconPath></svg> -->
+  </div>
+  <!-- #endregion Settings Icon -->
+
+  <!-- #region Comments Icon -->
+  <div class="item-detail-item-like-tooltip">
+    <div class="action-icon-display comment-count-icon " style="cursor: default">
+        <!-- <span class="count">{{item.CommentsCount}}</span> -->
+        <app-base-button-icon-image
+          [svgInner]="true"
+          [svgIcon]="commentsIcon"
+          [isCount]="true"
+          [count]="item.CommentsCount"
+          [tooltip]="commentsIconTooltip"
+          [tooltipPosition]="aboveTooltipPosition"
+          (clickOnIcon)="clickOnComment()"
+        >
+        </app-base-button-icon-image>
+        <!-- <svg #commentIconPath></svg> -->
+        <!-- <mat-icon svgIcon="commentIcon"></mat-icon> -->
+    </div>
+  </div>
+  <!-- #endregion Comments Icon -->
+
+  <!-- #region Favorite Icon     (mouseup)="clickOnActionIcon(favouriteActionType)" -->
+  <div class="item-detail-item-like-tooltip item-like-icon"
+
+  >
+    <app-action-icon
+        [userAuthenticated]="userAuthenticated"
+        [actionIconCouterTooltips]="actionFavouriteIconCouterTooltips"
+        [actionIconCouterTooltipsClass]='actionIconCouterTooltipsClass'
+        [actionIconCouterClasses]="actionIconCouterClasses"
+        [svgIconPath]="inputHtmlSvgIconFavourite"
+        [actionType]="favouriteActionType"
+        [actionIconCount]="item.FavouritesCount"
+        [actionIconUserAction]="item.UserFavourite"
+        [clickActionIconTrigger]="clickItemFavouriteTrigger"
+        [apiUrl]="favouriteApi"
+        [entityId]="item.Id"
+        [entityType]="likeEntityTypeName"
+        [isMobileView]="isMobileView"
+        (userAction)="onUserActionFavourite($event)"
+        (redirectToLogin)="redirectToLogin(item.Id)"
+    >
+    </app-action-icon>
+
+  </div>
+  <!-- #endregion Favorite Icon       [isMobileView]="isMobileView" -->
+
+  <!-- #region Like Icon (mouseup)="clickOnActionIcon(likeActionType)"-->
+  <div class="item-detail-item-like-tooltip item-like-icon"
+   >
+    <app-action-icon
+        [userAuthenticated]="userAuthenticated"
+        [actionIconCouterTooltips]="actionLikeIconCouterTooltips"
+        [actionIconCouterTooltipsClass]='actionIconCouterTooltipsClass'
+        [actionIconCouterClasses]="actionIconCouterClasses"
+        [svgIconPath]="inputHtmlSvgIconLike"
+        [actionType]="likeActionType"
+        [actionIconCount]="item.LikesCount"
+        [actionIconUserAction]="item.UserLiked"
+        [clickActionIconTrigger]="clickItemLikeTrigger"
+        [apiUrl]="likeApi"
+        [entityId]="item.Id"
+        [entityType]="likeEntityTypeName"
+        [isMobileView]="isMobileView"
+        [doubleTapAction]="doubleTapAction"
+        (userAction)="onUserActionLike($event)"
+        (redirectToLogin)="redirectToLogin(item.Id)"
+    >
+    </app-action-icon>
+  </div>
+  
+  <div class="item-share-icon share-icon-wrap"
+
+  >
+    <div class="base-button-share"
+    >
+        <div 
+          #shareMenuTrigger="matMenuTrigger"
+          [matMenuTriggerFor]="shareMenu"
+        >
+        </div> 
+        <app-base-button-icon-image 
+        
+          [svgInner]="true"
+          [svgIcon]="shareIcon"
+          [tooltip]="shareIconTooltip"
+          [tooltipPosition]="settingsTooltipPosition"
+          [tooltipClass]="settingsTooltipClass"
+          (clickOnIcon)="openShareMenu()"
+        >
+        </app-base-button-icon-image>
+    </div>
+    <!-- -->
+    <!-- <svg #settingsIconPath></svg> -->
+  </div>
+  <!--  -->
+
+        <!-- (closed)="onMenuClose()" -->
+  <mat-menu 
+    id="shareMenu"
+    class="share-menu" 
+    #shareMenu="matMenu" 
+    [overlapTrigger]="false"
+    yPosition="above"
+
+    xPosition="before"
+    (closed)="onMenuClose()"
+  >
+    <app-sharing-buttons
+      [item]="item"
+    ></app-sharing-buttons>
+
+  </mat-menu>
+
+
+
+  <div class="item-description-icon" *ngIf="isDescription">
+
+    <app-base-button-icon-image
+      [svgInner]="true"
+      [svgIcon]="descriptionIconPath"
+      [tooltip]="descriptionIconPathTooltip"
+      [tooltipPosition]="settingsTooltipPosition"
+      [tooltipClass]="settingsTooltipClass"
+      (clickOnIcon)="clickOnDescrpiton()"
+    >
+		</app-base-button-icon-image>
+    <!-- <svg #settingsIconPath></svg> -->
+  </div>
+
+  <!-- #endregion Like Icon -->                  
+
+  <!-- #region User Edit Action -->
+  <!-- <div *ngIf="item.UserItemOwner && typeOfItemsList === portfolioItemList" 
+      appHover (mouseHoverEvent)="onMouseHoverEditEvent($event)"
+      matTooltip="{{editTooltip}}" 
+      [matTooltipShowDelay]="tooltipShowDelay"
+      class="item-detail-item-like-tooltip ">
+    <mat-icon class="item-edit-icon" (click)="itemEditMode($event)" svgIcon="{{editIcon}}">
+    </mat-icon>
+  </div> -->
+  <!-- #endregion User Edit Action -->
+
+  <!-- #region Check Item  formControlName="stayOnPageControl" (change)=""-->
+  <!-- <div class="item-detail-item-like-tooltip item-action-select"  *ngIf="typeOfViewType === gridViewItem">
+    <mat-checkbox  labelPosition="before" style="float:right">
+      select
+    </mat-checkbox>
+  </div> -->
+  <!-- #endregion Check Item  -->
+</div>

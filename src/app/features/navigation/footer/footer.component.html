@@ -1,0 +1,132 @@
+
+<mat-toolbar *ngIf="!responsive"
+ color="background" class="footer-section" id="footer-toolbar">
+
+	<mat-toolbar-row>
+		<!-- All Rights Reserved -->
+		<mat-toolbar-row class="footer-toolbar-row-terms" *ngIf="!responsive">
+			<div class="footer-terms-responsive">
+				<p class="all-right"> Occpy © 2023 </p>
+
+			</div>
+		</mat-toolbar-row>
+
+		<!-- <mat-toolbar-row class="footer-toolbar-row-social" *ngIf="!responsive"> -->
+
+			<!-- <button mat-mini-fab class="footer-button-icon-margine">
+				<mat-icon svgIcon="fb" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-mini-fab class="footer-button-icon-margine">
+				<mat-icon svgIcon="twitter" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-mini-fab class="footer-button-icon-margine">
+				<mat-icon svgIcon="google" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-mini-fab class="footer-button-icon-margine">
+				<mat-icon svgIcon="linkedin" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-mini-fab>
+				<mat-icon svgIcon="youtube" class="footer-icon-margine"></mat-icon>
+			</button> -->
+
+			<!-- <button mat-icon-button class="footer-button-icon-margine footer-fb-icon">
+				<mat-icon svgIcon="fb" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button class="footer-button-icon-margine footer-tweet-icon">
+				<mat-icon svgIcon="twitter" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button class="footer-button-icon-margine">
+				<mat-icon svgIcon="google" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button class="footer-button-icon-margine footer-in-icon">
+				<mat-icon svgIcon="linkedin" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button>
+				<mat-icon svgIcon="youtube" class="footer-icon-margine footer-yt-icon"></mat-icon>
+			</button> -->
+
+		<!-- </mat-toolbar-row> -->
+
+		<mat-toolbar-row class="footer-toolbar-row-powered" *ngIf="!responsive">
+			<span>
+
+
+				<div class="powered">
+					<p class="terms-policy">
+						<a [routerLink]="['/terms']" mat-button color="accent">
+							Terms and Conditions
+						</a>
+						
+						<a [routerLink]="['/policy']" mat-button color="accent">
+							Privacy Policy
+						</a>
+						
+						<a href="mailto:contact@occpy.com" mat-button color="accent">
+							Contact
+						</a>
+					</p>
+				</div>
+			</span>
+		</mat-toolbar-row>
+
+		
+	</mat-toolbar-row>
+
+</mat-toolbar>
+
+
+
+<div  *ngIf="responsive"
+  class="footer-section footer-small" id="footer-toolbar">
+		<!-- <mat-toolbar-row class="footer-toolbar-row-social" *ngIf="responsive">
+
+			<button mat-icon-button class="footer-button-icon-margine footer-fb-icon">
+				<mat-icon svgIcon="fb" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button class="footer-button-icon-margine footer-tweet-icon">
+				<mat-icon svgIcon="twitter" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button class="footer-button-icon-margine">
+				<mat-icon svgIcon="google" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button class="footer-button-icon-margine footer-in-icon">
+				<mat-icon svgIcon="linkedin" class="footer-icon-margine"></mat-icon>
+			</button>
+			<button mat-icon-button>
+				<mat-icon svgIcon="youtube" class="footer-icon-margine footer-yt-icon"></mat-icon>
+			</button>
+
+		</mat-toolbar-row> -->
+		
+		<!-- <div class="footer-toolbar-row-powered " *ngIf="responsive">
+			<span> -->
+
+
+				<div class="powered">
+					<!-- <p class="terms-policy"> -->
+						<a (click)="navContact()" mat-button color="accent">
+							Contact
+						</a>
+
+						<a [routerLink]="['/terms']" mat-button color="accent">
+							Terms and Conditions
+						</a>
+						
+						<a [routerLink]="['/policy']" mat-button color="accent">
+							Privacy Policy
+						</a>
+					<!-- </p> -->
+
+
+				</div>
+			<!-- </span>
+		</div> -->
+
+		<div class="footer-toolbar-row-terms" *ngIf="responsive">
+			<div class="footer-terms-responsive">
+				<p class="all-right"> Occpy © 2023 </p>
+
+			</div>
+		</div>
+
+	</div>

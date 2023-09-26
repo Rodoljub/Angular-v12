@@ -1,0 +1,15 @@
+
+
+
+<mat-chip   itemprop="description"
+            ngClass="item-card-tags unselectable {{selectedTagClass}}" 
+
+            app-tag-hover
+            (mousedown)="onMouseDownTag($event, tag)" 
+            (mouseup)="onMouseUpTag($event, tag)"
+            (touchstart)="onTagTouchStart($event, tag)"
+            (touchmove)="onTagTouchMove()"
+            (touchend)="onTagTouchEnd($event, tag)"         
+        >
+            {{tag}}
+</mat-chip>

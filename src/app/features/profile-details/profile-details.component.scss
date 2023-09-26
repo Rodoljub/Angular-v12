@@ -1,0 +1,62 @@
+app-profile-details{
+    display: flex;
+    padding: 20px 16px 10px;
+    max-width: 46%;
+    margin: auto;
+
+    .profile-pic{
+        width: 144px !important;
+        height: 144px !important;
+    }
+
+    h5{
+        margin: 0;
+    }
+
+    .profile-details{
+        margin-left: 24px;
+    }
+}
+
+@media only screen and (min-width : 80px) and (max-width : 761px) {
+
+    .profile-details-image-wrap{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .profile-details{
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+
+    app-profile-details{
+        display: block;
+        
+        .profile-pic{
+            margin: 0 auto;
+            display: block !important;
+        }
+
+        h4{
+            margin: 24px auto 24px;
+            display: table;
+        }
+
+        app-profile-details-counters{
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+
+            app-count-label{
+                display: inline-grid;
+                margin-right: 0 !important;
+
+                span{
+                    margin: 0 auto !important;
+                }
+            }
+        }
+    }
+
+}

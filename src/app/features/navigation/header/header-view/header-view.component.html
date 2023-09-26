@@ -1,0 +1,17 @@
+<ng-container *ngIf="header">
+    <button mat-button ngClass="header-button header-view-grid-button"
+        (click)="changeCurrentViewType()"    
+    >
+        <mat-icon svgIcon="{{viewIcon}}">
+        </mat-icon>
+    </button>
+</ng-container>
+
+<ng-container *ngIf="!header"
+>
+    <app-icon-label
+        [svgIcon]="viewIcon"
+        [label]="viewLabel"
+        (clickOnButton)="changeCurrentViewType()"
+    ></app-icon-label>
+</ng-container>

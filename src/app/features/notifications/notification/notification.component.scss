@@ -1,0 +1,45 @@
+
+
+.notification-wrap{
+    display: flex;
+    min-height: 60px;
+    max-height: 60px;
+    cursor: pointer;
+}
+
+.notif-img-wrap{
+    display: block;
+    position: relative;
+    min-width: 50px;
+}
+.notification-delete{
+    margin: 10px 4px 0 4px;
+}
+.notification-img{
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius:50%;
+    width: 40px;
+    min-height: 20px;
+    height: 40px;
+    outline: none !important;
+    cursor: pointer;
+}
+
+.notification-body{
+    position: relative;
+    width: 100%;
+    padding: 12px 8px;
+
+    .notification-message{
+        display: block;
+    }
+
+    .notification-date{
+        display: block;
+        font-size: 10px;
+    }
+}

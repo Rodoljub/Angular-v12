@@ -1,0 +1,6 @@
+<app-notification class="app-item-wall" 
+        *ngFor="let notification of notifications; let i=index; trackBy: trackByItems"
+        [index]="i"
+        [notification]="notification"
+>
+</app-notification>

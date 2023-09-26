@@ -1,0 +1,65 @@
+
+
+<form appUpdateItemForm #formElement novalidate [formGroup]="uploadForm" id="update-item-form"
+    ngClass="update-item-form {{updateItemFormClass}}"
+>
+    <app-item-tags-update-control
+        [itemTags]="tags"
+        [isTagsDisabled]="isTagsDisabled"
+        (updatedItemTagsOut)="onUpdatedItemTags($event)"
+    >
+    </app-item-tags-update-control>
+
+    <!-- <mat-form-field color="accent" class="upload-title-input">
+        <textarea matInput #caption formControlName="captionControl" cdkTextareaAutosize
+        id="captionControl" Name="title" type="text" placeholder="Caption"
+        maxlength="{{captionMaxCharacters}}" [errorStateMatcher]="formErrorStateMatcher"
+        >
+        </textarea>
+        <mat-error *ngIf="captionControl.invalid" class="mat-error">
+            <div>{{captionControlErrorMessage}}</div>
+            <div class="mat-error-end">{{caption.value.length}} / {{captionMaxCharacters}}</div>
+        </mat-error>
+        <mat-hint align="start">{{titleHintMessage}}</mat-hint>
+        <mat-hint align="end"
+            *ngIf="!saveImageInfoUploading"
+        >{{caption.value.length}} / {{captionMaxCharacters}}</mat-hint>
+    </mat-form-field> -->
+    <!-- <div class="upload-description-wrap"> -->
+                <app-description-control  
+                    [descriptionValue]="descriptionValue"
+					(value)="setDescriptionValue($event)"
+				></app-description-control>
+
+                <app-comment-control
+					(value)="setCommentsValue($event)"
+                >
+                </app-comment-control>
+            <!-- </div> -->
+    <!-- <mat-form-field color="accent" class="upload-title-input">
+        <textarea matInput #copyright formControlName="copyrightControl" cdkTextareaAutosize
+        id="copyrightControl" Name="copyright" type="text" placeholder="copyright"
+        maxlength="{{copyrightMaxCharacters}}" [errorStateMatcher]="formErrorStateMatcher"
+        >
+        </textarea>
+        <mat-error *ngIf="copyrightControl.invalid" class="mat-error">
+            <div>{{copyrightControlErrorMessage}}</div>
+            <div class="mat-error-end">{{copyright.value.length}} / {{copyrightMaxCharacters}}</div>
+        </mat-error>
+        <mat-hint align="start">{{copyrightHintMessage}}</mat-hint>
+        <mat-hint align="end"
+            *ngIf="!saveImageInfoUploading"
+        >{{copyright.value.length}} / {{copyrightMaxCharacters}}</mat-hint>
+    </mat-form-field> -->
+    
+    <!-- <mat-checkbox class="upload-stay-checkbox" formControlName="stayOnPageControl" 
+    (change)="stayOnPage = !stayOnPage">
+        Stay on this page and upload more content
+    </mat-checkbox> -->
+    <!-- captionControl.invalid || saveImageInfoUploading || !isTagsChanged -->
+    <button mat-raised-button type="button" color="accent" 
+    [disabled]="isSubmitButtonDisabled"
+    (click)="saveImageInfo($event)" class="account-upload-qq-button usc-b">
+        Save Changes
+    </button>
+</form>

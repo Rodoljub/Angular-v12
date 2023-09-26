@@ -1,0 +1,27 @@
+ <svg version="1.1" 
+    id="Layer_1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    x="0px" y="0px" 
+    width="100%" height="100%" 
+    viewBox="0 0 80 80" enable-background="new 0 0 70 70"
+    xml:space="preserve" fit="" 
+    preserveAspectRatio="xMidYMid meet" 
+    focusable="false"
+ 
+>
+    <circle cx="40" cy="40" r="12" fill="#e91e63" ></circle>
+        <path d="M20,40a20,32 0 1,0 40,0a20,32 0 1,0 -40,0"
+        id="orbit1" fill="none" stroke-width="8" stroke="#606060" opacity="0.7"
+       transform="rotate(45 40 40)"
+    />   
+
+
+
+        <path d="M8,40a32,20 0 1,0 64,0a32,20 0 1,0 -64,0"
+        id="orbit2" fill="none" stroke-width="8" stroke="#606060" opacity="0.7"
+        transform="rotate(45 40 40)"
+    />
+
+
+</svg>

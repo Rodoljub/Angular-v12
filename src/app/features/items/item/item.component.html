@@ -1,0 +1,114 @@
+<div *ngIf="item" id="draggable" ngClass="{{itemDropSectionClass}}" draggable="false">
+
+    <div itemscope itemtype="https://schema.org/ImageObject"
+     class="item-card-accordian-div item-card {{itemCardClass}}" id="item-card-accordian-div" 
+
+        appHover
+        (mouseHoverEvent)="onMouseHoverEvent($event)" 
+        #cardElement [hidden]="!itemTranslated"
+    >
+
+        <!-- #region Tags -->
+        <div  *ngIf="currentViewType === wallViewItem" #itemTagsElement>
+            <app-item-tags
+                class="item-tags-wall"
+                [item]="item"
+                [isMobileView]="isMobileView"
+                [currentViewType]="currentViewType"
+                [typeOfItemsList]="typeOfItemsList"
+            >
+            </app-item-tags>
+        </div>
+        <!-- #endregion Tags -->
+        <!-- <a [href]="itemUrl"></a> -->
+        <app-item-image ngClass="item-image {{itemImageWallClass}}"
+            [item]="item"
+            [itemFilePath]="item.ItemFilePath"
+            [isMobileView]="isMobileView"
+            [listViewType]="currentViewType"
+            [imageHeight]="imageHeight"
+            [translate]="item.TranslateY"
+            [changingSize]="changingSize"
+            [flipImage]="flipImage"
+            (doubleTapAction)="doubleTapAction = $event"
+            (doubleTapLikeTrigger)="doubleTapLike($event)"
+            (openCarouselItemEmit)="openCarouselItem($event)"
+        >
+        </app-item-image>
+
+
+        <app-item-actions *ngIf="currentViewType === wallViewItem && showComments" 
+            [userAuthenticated]="userAuthenticated"
+            [item]="item"          
+            [isMobileView]="isMobileView"
+            [typeOfItemsList]="typeOfItemsList"
+            [typeOfViewType]="currentViewType"
+            [doubleTapTrigger]="doubleTapTrigger"
+            [doubleTapAction]="doubleTapAction" 
+            (deleteEntity)="deleteItem($event)"
+            (clickOnCommentOut)="onClickOnComment()"
+            (updateItem)="onUpdateItem($event)"
+            (clickOnDescription)="clickOnDescription($event)"
+        >
+        </app-item-actions>
+
+        <!-- #region Hover Item Background Tags -->
+        <div *ngIf="!isMobileView && desktopHover && currentViewType === gridViewItem" 
+            [@itemTranslateAnimationTrigger]="itemTagTranslateAnimationState" 
+            ngClass="item-hover-tags-background"
+        >
+            <div  #itemInfoElement class="item-info-tag-wrapper" (click)="$event.stopPropagation()">
+
+                <app-item-tags  
+                    [item]="item"
+                    [isMobileView]="isMobileView"
+                    [currentViewType]="currentViewType"
+                    [typeOfItemsList]="typeOfItemsList"
+                >
+                </app-item-tags>
+
+            </div>
+        </div>
+        <!-- #endregion Hover Item Background Tags -->
+
+        <!-- #region Hover Item Background -->
+        <div *ngIf="!isMobileView && desktopHover && currentViewType === gridViewItem" 
+            [@itemTranslateAnimationTrigger]="itemActionTranslateAnimationState" 
+            ngClass="item-hover-background"
+        >
+            <div  #itemInfoElement class="item-info-wrapper" (click)="$event.stopPropagation()">
+
+                <app-item-actions
+                    [userAuthenticated]="userAuthenticated"
+                    [item]="item"
+                    [isMobileView]="isMobileView"
+                    [typeOfItemsList]="typeOfItemsList"
+                    [typeOfViewType]="currentViewType"
+                    [doubleTapTrigger]="doubleTapTrigger"
+                    [doubleTapAction]="doubleTapAction" 
+                    (deleteEntity)="deleteItem($event)"
+                    (updateItem)="onUpdateItem($event)"
+                    
+                >
+                </app-item-actions>
+
+            </div>
+        </div>
+        <!-- #endregion Hover Item Background -->
+
+        <!-- #region Comments -->
+        <div app-comments *ngIf="currentViewType === wallViewItem && showComments" class="comment-card" 
+            [userAuthenticated]="userAuthenticated"
+            [itemId]="item.Id"
+            [comments]="itemCommentViewModel"
+            [commentsCount]="item.CommentsCount"
+            [isMobileView]="isMobileView"
+            [focusCommentTrigger]="focusCommentTrigger"
+            (onChangeCommentCount)="changeCommentCount($event)"
+            (updatedComments)="onUpdatedComments($event)"
+        >
+        </div>
+        <!-- #endregion Comments -->
+
+    </div>
+</div>

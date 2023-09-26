@@ -1,0 +1,105 @@
+
+<!-- #region Close Icon -->
+<mat-icon *ngIf="isCardModalView && !uploading" class="upload-close-icon" 
+	svgIcon="close" (click)="closeUpload()"
+>
+</mat-icon>
+<!-- #endregion Close Icon -->
+
+<div class="app-overlay-wrapper">
+	<mat-card 
+		id="upload-card"
+		class="upload-card"
+		appDropFile
+		[isFileDroped]="fileSelected"
+		(fileDroped)="onFileSelected($event)"
+	>
+		<!-- #region Progress Bar -->
+		<div *ngIf="accountProgressBar" [progressBarType]="accountProgressBarType" app-progress-bar
+			class="upload-progress-bar"
+		>
+		</div>
+		<!-- #endregion Progress Bar -->
+
+		<!-- #region upload-card-header -->
+		<div id="upload-card-header" class="upload-card-header">
+			<mat-icon *ngIf="!isCardModalView && !uploading" class="comment-arrow-back" svgIcon="arrowBack"
+				(click)="closeUpload()"
+			>
+			</mat-icon>
+
+			<!-- *ngIf="!itemViewModel" -->
+			<mat-card-title  class="account-upload-title upload-card-title">
+			  {{cardTitle}}     
+			</mat-card-title>
+		</div>
+		<!-- #endregion upload-card-header -->
+
+		<div id="upload-content-wrap" ngClass="upload-content-wrap {{contentWrapFlexClass}}">
+
+			<!-- #region Canvas -->
+			<canvas ngClass="upload-canvas"
+				appCanvas
+				[file]="file"
+				[imageUrl]="imageUrl"
+				[isCardFlex]="isCardFlex"
+				[resetCanvas]="resetCanvas"
+				[isCardModalView]="isCardModalView"
+				[itemViewModel]="itemViewModel"
+			>
+			</canvas>
+			<!-- #endregion Canvas -->
+			
+			<!-- #region Select File -->
+			<app-upload-select-files 
+				*ngIf="!uploading && !fileSelected"
+				[touchDevice]="touchDevice"
+				(fileAdded)="onFileSelected($event)"
+			>
+			</app-upload-select-files>
+			<!-- #endregion Select File -->
+			<div class="upload-description-wrap" *ngIf="!itemViewModel">
+				<app-description-control *ngIf="fileSelected" 
+					(value)="setDescriptionValue($event)"
+				></app-description-control>
+
+				<app-comment-control *ngIf="fileSelected"
+					(value)="setCommentsValue($event)"
+                >
+                </app-comment-control>
+
+				<button mat-raised-button type="button" color="accent" *ngIf="fileSelected"
+				(click)="uploadImage($event)" class="account-upload-qq-button upload-button">
+					Upload
+				</button>
+			</div>
+
+			<!-- #region Update Item Form  -->
+			<app-update-item-form *ngIf="itemViewModel" id="app-update-item-form"
+				ngClass="{{appUpdateItemFormClass}}"
+				[itemViewModel]="itemViewModel"
+				[isCardFlex]="isCardFlex"
+				(itemUpdating)="onItemUpdating($event)"
+				(setUploadCard)="onSetUploadCard()"
+			>
+			</app-update-item-form>
+			<!-- #endregion Update Item Form -->
+
+			<!-- #region Video Element -->
+				<!-- <video appVideo [hidden]="!videoAutoplay" class="upload-video-element" autoplay></video> -->
+			<!-- #endregion Video Element -->
+
+		</div>
+		
+		<!-- #region Card Info -->		
+		<!-- <div *ngIf="!videoAutoplay && !itemViewModel" class="upload-card-info" 
+				id="upload-card-info"
+		>
+				<p>{{uploadCardInfo}}</p>
+		</div> -->
+
+		<app-images-analyzing></app-images-analyzing>
+		<!-- #endregion Card Info -->
+
+	</mat-card>
+</div>

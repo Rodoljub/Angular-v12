@@ -1,0 +1,14 @@
+
+
+<mat-form-field color="accent" class="upload-description-input">
+    <textarea matInput cdkTextareaAutosize #description 
+    [formControl]="descriptionControl" maxlength="250" Name="description"
+     placeholder="Description" [errorStateMatcher]="formErrorStateMatcher">
+</textarea>
+    <!-- <mat-error *ngIf="descriptionControl.invalid" class="mat-error">
+        <div>{{descriptionControlErrorMessage}}</div>
+        <div class="mat-error-end">{{description.value.length}} / {{descriptionMaxCharacters}}</div>
+    </mat-error>
+    <mat-hint align="start">{{descriptionHintMessage}}</mat-hint> -->
+    <mat-hint align="end">{{description.value.length}} / {{descriptionMaxCharacters}}</mat-hint>
+</mat-form-field>

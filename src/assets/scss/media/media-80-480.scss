@@ -1,0 +1,24 @@
+@mixin quantum-media-80-480($theme) {
+@media only screen and (min-width : 80px) and (max-width : 480px) {
+
+
+        /* #region Variables */
+        
+        
+            $primary: map-get($theme, primary);
+            $accent: map-get($theme, accent);
+            $warn: map-get($theme, warn);
+
+
+            app-saved-searches{
+                .container{
+                  padding: 0 !important;
+                  overflow: hidden;
+                }
+
+                .item-card{
+                    border-radius: 0 !important;
+                }
+              }
+    }
+}

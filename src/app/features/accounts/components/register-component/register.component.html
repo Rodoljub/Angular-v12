@@ -1,0 +1,89 @@
+    <!-- Social Sign Up -->
+    <div style="overflow: auto;">
+        <p>Continue with:</p>
+        <div class="acoounts-card-social-button-area">
+            <app-social-nav-label [socialProvider]="'Facebook'"></app-social-nav-label>
+            <app-social-nav-label [socialProvider]="'Google'"></app-social-nav-label>
+
+        </div>
+    <!-- Social Sign Up -->
+
+
+    <!-- Register Form -->
+        <form 
+        novalidate
+        [formGroup]="registerForm"
+        (ngSubmit)="validate($event)"
+        (keyup.enter)="formKeyupEnter($event)"
+        >
+            <mat-form-field class="register-input-name" color="accent">
+                <input matInput 
+                id="nameControl"
+                formControlName="nameControl"
+                type="text"              
+                name="registerName"                             
+                placeholder="Name"
+                maxlength="26"     
+                [errorStateMatcher]="formErrorStateMatcher"      
+                > 
+                <mat-error  *ngIf="formControls && nameControlError" class="mat-error">
+                    {{nameControlErrorMessage}}
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="register-input-email" color="accent">
+                <input 
+                    matInput 
+                    id="emailControl"
+                    formControlName="emailControl"
+                    type="email"
+                    name="email"
+                    placeholder="Email" 
+                    [errorStateMatcher]="formErrorStateMatcher"
+                />
+                <mat-error  *ngIf="formControls && emailControlError" class="mat-error">
+                    {{emailControlErrorMessage}}
+                </mat-error>
+        
+            </mat-form-field>
+
+            <mat-form-field class="register-input-password" color="accent">
+                <input 
+                    matInput 
+                    id="passwordControl"
+                    formControlName="passwordControl"
+                    type="password"            
+                    name="password"
+                    placeholder="Password" 
+                    [errorStateMatcher]="formErrorStateMatcher"
+                /><!-- (keyup.enter)="validate($event)"-->   
+                <mat-error  *ngIf="formControls && passwordControlErrorMessage" class="mat-error">
+                    {{passwordControlErrorMessage}}
+                </mat-error>
+
+            </mat-form-field>
+        
+            <button mat-raised-button color="accent" type="submit"
+                    class="account-upload-qq-button"
+                    [disabled]="!registerForm.valid"       
+                > 
+                Create Account
+            </button>
+        </form>
+    <!-- Register Form -->
+    <button mat-button color="accent" type="button" (click)="onLoginLink('login')">
+        Login
+    </button>
+
+    <div class="accounts-terms-responsive" >
+        <p  class="all-right">	By signing up you agree to our</p>
+        <p class="terms-policy"><a (click)="onTermsPolicy('terms')"  mat-button color="accent">
+            Terms Of Use 
+        </a>			
+            and 
+        <a (click)="onTermsPolicy('policy')"  mat-button color="accent">
+            Privacy Policy
+        </a></p>
+    </div>
+</div>

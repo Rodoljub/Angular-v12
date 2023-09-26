@@ -1,0 +1,42 @@
+<div class="comments-show-hide-section">
+  <div *ngIf="commentsCount !== 0 && (showHideComments === showMoreComments || showHideComments === showComments 
+  || showHideComments === showComment) || (showHideComments === hideComments || showHideComments === hideComment)">
+    <a *ngIf="!commentsProgresBar && showHideComments === showMoreComments || showHideComments === showComments 
+              || showHideComments === showComment"
+      (click)="getComments()"
+    >
+      {{showHideComments}}
+    </a>
+
+    <a *ngIf="!commentsProgresBar && showHideComments === hideComments || showHideComments === hideComment"
+      (click)="hideAllComments()"
+    >
+      {{showHideComments}}
+    </a>
+  </div>
+  <mat-card-title class="comment-dots-loader" *ngIf="commentsProgresBar">
+      <app-dots-loader class="comments-spinner" ></app-dots-loader>
+  </mat-card-title> 
+</div>
+
+<!-- <div class="detail-comment-separator"></div> -->
+
+<div id="content" #content ngClass="reply-content{{expandedReplyContentClass}}">
+  <!-- ; trackBy: trackComment-->
+    <div app-comment *ngFor="let comment of comments"
+      [userAuthenticated]="userAuthenticated"
+      [comment]="comment"
+      [commentParentId]="comment.Id"
+      [commentType]="commentType"
+      [replysCount]="comment.ChildCount" 
+
+      [itemId]="itemId"
+      [replyBool]="replyBool" 
+      [isMobileView]="isMobileView"
+      [reportedContentReasons]="reportedContentReasons"
+
+      (deleteEntity)="onDeleteComment($event)"
+      (updatedComment)="onUpdatedComment($event)"
+      >
+    </div>
+</div>

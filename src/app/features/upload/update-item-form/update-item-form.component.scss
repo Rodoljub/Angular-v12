@@ -1,0 +1,44 @@
+.mat-checkbox-label{
+    white-space: normal !important;
+    
+}
+
+.update-item-form{
+    max-width: 400px;
+    margin: auto;
+
+}
+
+.update-item-form-absolute{
+    width: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 0 0 0 24px ;
+}
+
+.update-item-form-relative{
+    padding: 0 0 0 24px ;
+    position: absolute;
+}
+
+.upload-title-input{
+    width: 100% !important;
+    margin-bottom: 4px !important;
+    margin-top: 4px !important;
+    textarea{
+        padding: 0;
+        height: auto !important;
+    }
+
+    .mat-right{
+        white-space: nowrap;
+    }
+}
+
+.usc-b{
+    margin-top: 12px;
+}

@@ -1,0 +1,67 @@
+{"scope": "/",
+
+ "name": "Occpy",
+ "short_name": "Occpy",
+ "id": "/",
+ "start_url": "/",
+ "display": "standalone",
+ "background_color": "#fff",
+ "theme_color": "#e91e63",
+ "orientation": "portrait",
+ "icons": [
+       {
+        "src": "/assets/images/favicon/favicon-16x16.png",
+        "sizes": "16x16",
+        "type": "image/png",
+        "density": "0.5"
+       },
+       {
+        "src": "/assets/images/favicon/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png",
+        "density": "0.75"
+       },
+       {
+        "src": "/assets/images/favicon/mstile-128x128.png",
+        "sizes": "128x128",
+        "type": "image/png",
+        "density": "1.5"
+       },
+       {
+        "src": "/assets/images/favicon/mstile-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png",
+        "density": "3.0"
+       },
+       {
+        "src": "/assets/images/favicon/mstile-270x270.png",
+        "sizes": "270x270",
+        "type": "image/png",
+        "density": "3.0"
+       },
+       {
+        "src": "/assets/images/favicon/mstile-558x270.png",
+        "sizes": "558x270",
+        "type": "image/png",
+        "density": "3.5"
+       },
+       {
+        "src": "/assets/images/favicon/mstile-558x558.png",
+        "sizes": "558x558",
+        "type": "image/png",
+        "density": "4.0"
+       },
+       {
+        "src": "/assets/images/favicon/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "density": "4.0"
+       },
+       {
+        "src": "/assets/images/favicon/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "density": "4.0"
+       }
+    ]
+}

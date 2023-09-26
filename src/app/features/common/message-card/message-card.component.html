@@ -1,0 +1,15 @@
+<div class="container-centar" *ngIf="messageCard">
+    <mat-card class="message-card">
+        <mat-card-title class="account-upload-title">
+          {{messageTitle}}
+        </mat-card-title>
+        <mat-card-content class="acoounts-card-content">
+          {{messageContent}}
+        </mat-card-content>
+        <mat-card-actions class="message-card-action">
+            <button mat-button  color="accent" type="button" (click)="messageAction()">
+                {{messageActionLable}}
+              </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

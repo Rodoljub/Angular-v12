@@ -1,0 +1,39 @@
+<div class="container-centar">
+    <div *ngIf="success" class="message-card">
+            <!-- <h4>Email Confirmation.</h4>
+            <p></p>
+            <h2></h2>
+            <p></p> -->
+            <p>
+                Thank you for confirming your email.
+            </p>
+            <p></p>
+            <p>
+                You are logged in.
+            </p>
+            <p></p>
+            <div class="powered">
+                Click
+                <a [routerLink]="['/profile']" mat-button color="accent"> 
+                here
+            </a>and go to Your Profile
+        </div>
+    </div>
+    <div *ngIf="!success" class="message-card">
+            <!-- <h4></h4>
+            <p></p>
+            <h2></h2> -->
+            <p>Something went wrong!</p>
+            <p>
+                Please go to your email and try confirm again.
+            </p>
+            <p></p>
+            <div class="powered">
+              Or click 
+                <a [routerLink]="['/accounts/resendconfirmemail']" mat-button color="accent"> 
+                here
+            </a> to resend confirmation email.
+          
+            </div>
+    </div>
+</div>

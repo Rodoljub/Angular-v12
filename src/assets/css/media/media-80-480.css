@@ -1,0 +1,235 @@
+/* #region Media Screen (min-width : 80px) and (max-width : 480px) */
+@media only screen and (min-height : 80px) and (max-height : 480px) and (min-width : 80px) and (max-width : 761px) {
+    .message-card{
+        margin-top: 0px !important;
+        margin-bottom: 0 !important;
+        padding: 24px !important;
+        height: 100% !important;
+        width: 100% !important;
+        border-radius: 0px !important;
+
+        /* min-height: 100% !important; */
+    }
+
+    .take-image-card-button{
+        bottom: 56px !important;
+    }
+
+    .upload-video-element{
+        position: absolute;
+        transform: rotate(90deg);
+
+        transform-origin: bottom left;
+        width: 100vh;
+        height: 100vw;
+        margin-top: -100vw;
+        object-fit: cover;
+
+        z-index: 4;
+        visibility: visible;
+    }
+
+    .action-icon-button{
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+@media only screen and (min-width : 80px) and (max-width : 480px) {
+
+    .action-icon-button{
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .app-header-mat-icon{
+        height: 28px !important;
+        width: 28px !important;
+    }
+
+    /* #region Header */
+
+    .app-menu-content{
+        min-width: 80vw !important;
+    }
+
+
+        /* #region Search */
+
+
+            .header-mobile-search-button{
+                margin-right: 8px !important;
+                min-width: 36px !important;
+                height: 36px !important;
+            }
+
+
+            .search-menu{
+                width: 100% !important;
+                min-width: 100% !important;
+                margin-top: 0 !important;
+                right: 0 !important;
+                bottom: 50px !important;
+            }
+
+
+        /* #endregion Search */
+
+
+        /* #region Profile */
+
+            .header-profile-circular-image{
+                position: relative !important;
+                width: 28px !important;
+                height: 28px !important;
+            }
+
+        /* #endregion Profile */
+
+    /* #endregion Header */
+
+    /* #region Accounts */
+
+        .account-progress-bar{
+            position: fixed !important;
+            width: 105% !important;
+            margin-bottom: 0px !important;        
+            margin-top: -30px !important; 
+        }
+
+
+
+
+        .message-card{
+            margin-top: 0px !important;
+            margin-bottom: 0 !important;
+            padding: 24px !important;
+            height: 100% !important;
+            width: 100% !important;
+            border-radius: 0px !important;
+
+            /* min-height: 100% !important; */
+        }
+
+        .account-upload-qq-button{
+            width: 100% !important;
+            margin: 6px 0 8px 0 !important;
+        }
+
+        .browse-input{
+            width: 100% !important;
+            /* padding-bottom: 15px !important; */
+        }
+
+        .browse-input
+        .mat-form-field-infix{
+            border: 0 !important;
+        }
+
+        .browse-button{
+            width: 100% !important;
+        }
+
+    /* #endregion Accounts */
+
+    /* #region List */
+
+        .item-list
+            .container{
+                width: 100% !important;
+            }
+        
+            /* .col-xs-6{
+                width: 100% !important;
+            } */
+
+            .col-md-6{
+                width: 100% !important;
+            }
+    
+    /* #endregion List */
+
+    /* #region Item Tags */
+        .item-tags-scroll{
+            padding: 0 !important;
+        } 
+    /* #endregion Item Tags */
+
+    /* #region Item */
+
+        .app-item-wall{
+            width: 97% !important;
+        }
+
+        .app-item-carousel{
+            width: 100% !important;
+        }
+
+        .item-card-item-path{
+            width: 100% !important;
+        }
+
+        .item-card-item-detail{
+            border-radius: 0 !important;
+        }
+    /* #endregion Itewm */
+
+    /* #region Footer */
+        .footer-section{
+            display: inline-block !important;
+        }
+
+        .footer-section
+        .mat-toolbar-row{
+            display: inline;
+            overflow: initial !important;
+        }
+
+        .footer-toolbar-row-terms{
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center;
+            margin: 0 !important;
+        }
+
+        .footer-toolbar-row-social{
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 0 0 0 0 !important;
+            height: 44px !important;
+        }
+
+        .footer-toolbar-row-powered{
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 0 !important;
+        }
+
+    /* #endregion Footer */  
+
+
+    /* #region Dialog */
+    .mat-dialog-actions{
+        display: block !important;
+        padding-top: 0 !important;
+    }
+
+    .mat-dialog-actions
+    button{
+        width: 100%;
+        margin-left: 0 !important;
+        /* margin-bottom: 4px; */
+    }
+
+    mat-dialog-container{
+        min-width: 80vw;
+        padding: 16px !important;
+    }
+    /* #endregion Dialog */
+
+    snack-bar-container:hover{
+        box-shadow: 0 0 12px #999;
+    }
+}
+/* #endregion Media Screen (min-width : 80px) and (max-width : 480px) */

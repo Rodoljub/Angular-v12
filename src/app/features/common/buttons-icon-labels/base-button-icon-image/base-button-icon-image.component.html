@@ -1,0 +1,35 @@
+
+<span style="display:flex"  (click)="clickIcon($event)"
+    (mousedown)="$event.stopPropagation()"
+    matTooltip="{{tooltip}}" 
+    [matTooltipDisabled]="disabled"
+    #headerIconTooltip="matTooltip"
+    [matTooltipPosition]="position.value!"
+>
+    <span *ngIf="isCount" class="count">{{count}}</span>
+    <button mat-icon-button [disableRipple]="true" color="accent" class="action-icon-button"
+        *ngIf="matIcon || svgInner">
+        <mat-icon 
+            *ngIf="matIcon"
+            ngClass="{{iconClass}}"
+            svgIcon="{{svgIcon}}"
+        >
+        </mat-icon>	
+
+        <span
+            *ngIf="svgInner"
+        >
+            <svg  #iconPathElement>
+            </svg>
+        </span>	
+    </button>
+
+    <img *ngIf="imgButton"
+        ngClass="{{iconClass}}" 
+        alt=""
+        appImagePreloader            
+        [attr.src]=''
+        [imagePath]="imagePath"
+        [isHeaderProfileImg]="isHeaderProfileImg"
+    />
+</span>

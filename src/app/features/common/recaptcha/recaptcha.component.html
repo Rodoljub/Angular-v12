@@ -1,0 +1,7 @@
+
+
+<re-captcha 
+    [hidden]="!reCaptcha"
+    class="g-recaptcha" size="invisible"  
+    (captchaResponse)="handleCorrectCaptcha($event)" site_key="{{siteKey}}">
+</re-captcha>

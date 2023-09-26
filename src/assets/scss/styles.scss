@@ -1,0 +1,86 @@
+
+
+@import '~@angular/material/_theming';
+
+
+
+/* always include only once per project */
+@include mat-core();
+
+/* import our custom theme */
+@import './quantum-theme.scss';
+@import './quantum-light-theme.scss';
+@import './quantum-dark-theme.scss';
+@import './quantum-styles.scss';
+@import './media/media-80-480.scss';
+@import '../../app/features/items/item/item-image/item-image.component.scss';
+@import '../../app/features/items/item/item-tags/item-tags.component.scss';
+@import '../../app/features/items/item/item-tags/item-tag/item-tag.component.scss';
+@import '../../app/features/accounts/accounts.component.scss';
+@import '../../app/features//upload/upload.component.scss';
+@import '../../app//features/upload/update-item-form/item-tags-update-control/item-tags-update-control.component.scss';
+@import '../../app//features/guest/guest-interests/search-tags-form/search-tags-form.component.scss';
+@import '../../app/features/guest/guest-auth-nav/guest-auth-nav.component.scss';
+@import '../../app/features/common/legal-404/coockies-notice/coockies-notice.component.scss';
+
+
+/* specify theme class eg: <body class="my-theme"> ... </body> */
+.quantum-theme {
+  
+  /* use our theme with angular-material-theme mixin */
+  @include angular-material-theme($quantum-theme);
+  @include quantum($quantum-theme);
+  @include quantum-media-80-480($quantum-theme);
+  @include item-image-component($quantum-theme);
+  @include item-tags-component($quantum-theme);
+  @include item-tag-component($quantum-theme);
+  @include accounts-component($quantum-theme);
+  @include upload-component($quantum-theme);
+  @include item-tags-update-control-component($quantum-theme);
+  @include search-tags-form-component($quantum-theme);
+  @include guest-auth-nav-component($quantum-theme);
+  @include coockies-notice-component($quantum-theme);
+}
+
+/* additional css classes
+  you can hardcode one of them on the <body> tag 
+  or switch dynamically during runtime with [class] */
+.quantum-light-theme {
+    @include angular-material-theme($quantum-light-theme);
+    @include quantum($quantum-light-theme);
+    @include quantum-media-80-480($quantum-light-theme);
+    @include item-image-component($quantum-light-theme);
+    @include item-tags-component($quantum-light-theme);
+    @include item-tag-component($quantum-light-theme);
+    @include accounts-component($quantum-light-theme);
+    @include upload-component($quantum-light-theme);
+    @include item-tags-update-control-component($quantum-light-theme);
+    @include search-tags-form-component($quantum-light-theme);
+    @include guest-auth-nav-component($quantum-light-theme);
+    @include coockies-notice-component($quantum-light-theme);
+  }
+  
+  .quantum-dark-theme {
+
+    /* .item-tags-scroll-wrapper::before{
+       background: linear-gradient(to right,#424242, transparent) !important;
+     }
+     .item-tags-scroll-wrapper::after{
+       background: linear-gradient(to left,#424242, transparent) !important;
+     } */
+
+    @include angular-material-theme($quantum-dark-theme);
+    @include quantum($quantum-dark-theme);
+    @include quantum-media-80-480($quantum-dark-theme);
+    @include item-image-component($quantum-dark-theme);
+    @include item-tags-component($quantum-dark-theme);
+    @include item-tag-component($quantum-dark-theme);
+    @include accounts-component($quantum-dark-theme);
+    @include upload-component($quantum-dark-theme);
+    @include item-tags-update-control-component($quantum-dark-theme);
+    @include search-tags-form-component($quantum-dark-theme);
+    @include guest-auth-nav-component($quantum-dark-theme);
+    @include coockies-notice-component($quantum-dark-theme);
+  }
+
+

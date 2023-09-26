@@ -1,0 +1,10 @@
+<button  
+    mat-fab ngClass="{{buttonClass}}{{buttonInactiveClass}}" 
+    matTooltip="{{buttonTooltip}}"
+    [matTooltipShowDelay]="tooltipShowDelay"
+    [matTooltipPosition]="buttonTooltipPosition"
+    #buttonTooltipEl="matTooltip"
+    (click)="doSearch()"
+>
+    <mat-icon svgIcon="{{svgIcon}}"></mat-icon>
+</button>

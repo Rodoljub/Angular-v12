@@ -1,0 +1,26 @@
+<form [formGroup]="addCommentForm" >
+    <mat-form-field  color="accent" floatLabel="never" 
+      class="comment-card-input"   
+    >
+        <textarea matInput 
+            (mouseup)="clickCommentInput()" 
+            (focusin)="focusCommentInput()"
+            (focusout)="blurCommentInput()"
+            (touchmove)="textareaTouchmove()"
+            (touchend)="textareaTouchEnd()"
+            #commentInputElement   
+            type="text"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            formControlName="addCommentControl"
+            placeholder="{{inputPlaceholder}}">         
+        </textarea>
+        
+        <mat-icon ngClass="comment-send-icon{{commentSendIconFillClass}}" 
+            matSuffix svgIcon="send" (mouseup)="clickOnSendIcon()"
+            (touchmove)="addCommentTouchmove()"
+            (touchend)="addCommentTouchEnd()"
+        >
+        </mat-icon>
+    </mat-form-field> 
+  </form>

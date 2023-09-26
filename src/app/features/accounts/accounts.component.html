@@ -1,0 +1,66 @@
+
+
+<button *ngIf="!load && !cardHeader && (!accountProgressSpinner && !accountProgressBar)"
+    mat-button class="header-button ac bac accounts-close"
+    (click)="clickCloseAccounts()"
+>
+  <mat-icon  
+      svgIcon="close" 
+  >
+  </mat-icon>
+</button>
+
+<div class="accounts-header" *ngIf="cardHeader && !load && !loginPath  && (!accountProgressSpinner && !accountProgressBar)">
+  <button mat-button *ngIf="!load  && (!accountProgressSpinner && !accountProgressBar)"
+    [hidden]="accountProgressSpinner && accountProgressBar"  
+    ngClass="header-button acc-header-close" 
+    (click)="locationBack()"
+  >
+    <mat-icon svgIcon="arrowBack">
+    </mat-icon>
+  </button>
+  <mat-card-title class="account-upload-title" *ngIf="!loginPath"
+  [@accountsCardOpacityAnimationTrigger]='accountsCardOpacityAnimationState'>
+    {{accountCardTitle}}      
+  </mat-card-title>
+</div>
+
+<div class="account-card" 
+
+  #accCard id="acc-card"
+>
+  <!-- #region Account Progress Bar  -->
+  <div  
+        *ngIf="accountProgressBar" 
+        [progressBarType]="accountProgressBarType" 
+        app-progress-bar
+  >
+  </div>
+  <!-- #endregion Account Progress Bar  -->
+
+  <!-- #region Account Progress Spinner -->
+  <app-progress-spinner class="icon-spinner-center"
+        *ngIf="accountProgressSpinner"
+        class="accounts-progress-spinner"
+  >
+  </app-progress-spinner>
+  <!-- #endregion Account Progress Spinner -->
+
+  <!-- #region Account Title -->
+  <mat-card-title class="account-upload-title" *ngIf="!cardHeader && !loginPath"
+      [@accountsCardOpacityAnimationTrigger]='accountsCardOpacityAnimationState'
+  >
+        {{accountCardTitle}}      
+  </mat-card-title>
+  <!-- #endregion Account Title -->
+  
+  <!-- #region Account Content -->
+      <div #matCardContent 
+        ngClass="acoounts-card-content {{mobileContentClass}} {{accContentOpacityClass}}"
+      >
+          <router-outlet></router-outlet>
+      </div>
+  <!-- #endregion Account Content -->
+
+</div>
+ 

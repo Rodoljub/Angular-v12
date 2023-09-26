@@ -1,0 +1,40 @@
+
+<!-- <app-guest-interests></app-guest-interests> -->
+<!-- <mat-divider [vertical]="true"></mat-divider> -->
+<ng-container *ngIf="load">
+    <ng-container *ngIf="wideLayout">
+        <div class="guest-wide-wrap">
+            <app-guest-interests></app-guest-interests>
+            <app-divider-or></app-divider-or>
+            <app-guest-auth-nav></app-guest-auth-nav>
+            <div class="guest-logo-wrap">
+                <mat-icon svgIcon="logo" class="guest-logo guest-wide-logo"></mat-icon>
+            </div>
+            <!-- <div class="hobbyists-image-wrap">
+                <img  [attr.src]='hobbyisImagePath' alt="">
+            </div> -->
+            <!-- (imageLoading)="onImageLoading($event)" -->
+        </div>
+    </ng-container>
+    
+
+
+    <ng-container *ngIf="!wideLayout">
+        <div class="guest-mobile-wrap {{mobileWrapTopClass}}">
+            <div class="guest-logo-wrap" *ngIf="!isInterestsFocused">
+                <mat-icon svgIcon="logo" class="guest-logo guest-mobile-logo"></mat-icon>
+            </div>
+            <!-- <div class="hobbyists-image-wrap">
+                <img [attr.src]='hobbyisImagePath' alt="">
+            </div> -->
+            <app-guest-interests></app-guest-interests>
+            <ng-container *ngIf="!isInterestsFocused">
+                <app-divider-or></app-divider-or>
+                <app-guest-auth-nav></app-guest-auth-nav>  
+            </ng-container>    
+        </div>
+    </ng-container>
+    
+</ng-container>
+
+

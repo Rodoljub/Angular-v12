@@ -1,0 +1,70 @@
+
+<app-item-image class="item-image modal-item-image"
+    [item]="item"
+    [itemFilePath]="item.ItemFilePath"
+    [listViewType]="carouselView"
+    [flipImage]="flipImage"
+    (doubleTapAction)="doubleTapAction = $event"
+    (doubleTapLikeTrigger)="doubleTapLike($event)"
+>
+</app-item-image>
+<div  *ngIf="!clientScreenWide && !hideComments" class="comment-arrow-back-wrap">
+    <mat-icon class="comment-arrow-back" svgIcon="arrowBack"
+        (click)="clickOnCommentsArrowBack()"
+    >
+    </mat-icon>
+</div>
+
+
+<div class="item-modal-action-wrap">
+    <div [hidden]="!showDetails"
+        [@itemTranslateAnimationTrigger]="itemTagTranslateAnimationState" 
+        ngClass="item-hover-tags-background"
+    >
+        <div  #itemInfoElement class="item-info-tag-wrapper" >   
+            <app-item-tags  
+                [item]="item"
+                [detailItem]="item"
+                [isMobileView]="isMobileView"
+                [currentViewType]="carouselView"
+                [typeOfItemsList]="typeOfItemsList"
+                (closeDetailItem)="onCloseDetailItem($event)"
+            >
+            </app-item-tags>
+        </div>
+    </div>
+
+    <div app-comments [hidden]="hideComments"  ngClass="comment-card {{commentCardAbsoluteClass}}" 
+            [userAuthenticated]="userAuthenticated"
+            [itemId]="item.Id"
+            [comments]="itemCommentViewModel"
+            [commentsCount]="item.CommentsCount"
+            [isMobileView]="isMobileView"
+            [focusCommentTrigger]="focusCommentTrigger"
+            (onChangeCommentCount)="changeCommentCount($event)"
+            (updatedComments)="onUpdatedComments($event)"
+        >
+    </div>
+
+    <div *ngIf="showDetails" ngClass="item-hover-background"
+        [@itemTranslateAnimationTrigger]="itemActionTranslateAnimationState"        
+    >
+        <div  #itemInfoElement class="item-info-wrapper" (click)="$event.stopPropagation()">
+            <app-item-actions
+                [userAuthenticated]="userAuthenticated"
+                [item]="item"
+                [isMobileView]="isMobileView"
+                [typeOfItemsList]="typeOfItemsList"
+                [typeOfViewType]="currentViewType"
+                [doubleTapTrigger]="doubleTapTrigger"
+                [doubleTapAction]="doubleTapAction" 
+                (clickOnCommentOut)="showAndFocusComment()"
+                (deleteEntity)="deleteItem($event)"
+                (clickOnDescription)="clickOnDescription($event)"
+            >
+            <!--         (deleteEntity)="deleteItem($event)"
+                (updateItem)="onUpdateItem($event)" -->
+            </app-item-actions>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="items-modal-list-wrapper" *ngIf="appItem">
+<button *ngIf="showIcons && showCloseIcon"
+    mat-button class="header-button ac bac items-modal-list-close" (click)="clickCloseItem()"
+>
+    <mat-icon  
+        svgIcon="close" 
+    >
+    </mat-icon>
+</button>
+<ng-container  *ngIf="appItem">
+    <ng-container *ngIf="showDetails && showIcons">
+        <button *ngIf="showBack" mat-button ngClass="header-button navigate-modal-button back-button ac bac"
+            (click)="goBack()"
+        >
+            <mat-icon svgIcon="back"
+            >
+            </mat-icon>
+        </button>
+
+        <button *ngIf="showNext" mat-button ngClass="header-button navigate-modal-button next-button ac bac"
+            (click)="goNext()"
+        >
+            <mat-icon svgIcon="next"
+            >
+            </mat-icon>
+        </button>
+    </ng-container>
+    <!-- app-items-modal-list -->
+    <div  style="display:flex" class="app-overlay-wrapper items-modal-moving-element" #itemsWrapEl
+                (touchstart)="onTouchStart($event)"
+                (touchmove)="onTouchMove($event)"
+                (touchend)="onTouchEnd($event)"
+                (mousedown)="onMouseDown($event)"
+                (mousemove)="onMouseMove($event)"
+                (mouseup)="onMouseUp($event)"
+    >
+    <button *ngIf="showIcons && !showCloseIcon" #closeIconModalButton 
+        mat-button class="header-button ac bac items-modal-list-close" (click)="clickCloseItem()"
+    >
+        <mat-icon  
+            svgIcon="close" 
+        >
+        </mat-icon>
+    </button>
+        <ng-container  >
+            <div *ngFor="let item of items" class="items-modal-wrapper" #itemWrap               
+                id="app-item-detail-wrap-{{item.Index}}"
+            >
+                <!--      [index]="i" -->
+                <app-item-modal itemscope itemtype="https://schema.org/ImageObject"
+                    ngClass="col-md-6 app-item-carousel  {{itemModalFlex}}" 
+                    id="app-item-detail"
+                    [userAuthenticated]="userAuthenticated"
+                    [isMobileView]="mobileView"
+                    [typeOfItemsList]="typeOfItemsList"
+                    [item]="item"
+               
+                    [showDetails]="showDetails"
+                    [clientScreenWide]="clientScreenWide"
+                    (deleteEntity)="setDeleteItem($event)"
+                    (hideDetails)="hideDetails()"
+                    (closeItemEmit)="clickCloseItem()"
+                >
+                </app-item-modal>
+            
+            </div>
+        </ng-container>
+    </div>
+</ng-container>
+</div>

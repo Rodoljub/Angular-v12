@@ -1,0 +1,16 @@
+
+
+
+@import '~@angular/material/_theming';
+
+$quantum-dark-theme-primary: mat-palette($mat-blue-grey, 800, 400, 900);
+$quantum-dark-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$quantum-dark-theme-warn: mat-palette($mat-yellow);
+
+$quantum-dark-theme: mat-dark-theme(
+    $quantum-dark-theme-primary,
+    $quantum-dark-theme-accent,
+    $quantum-dark-theme-warn
+);
+
+

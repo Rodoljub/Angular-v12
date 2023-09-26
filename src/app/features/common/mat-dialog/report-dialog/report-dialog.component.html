@@ -1,0 +1,22 @@
+<span >
+  <h4>{{reportedTypeTitle}}</h4>
+  <mat-radio-group 
+      class="mat-dialog-radio-group"
+      [formControl]="dialogControl" 
+    >
+      <mat-radio-button 
+        *ngFor="let description of reportedContentReasonsDescription"
+        [value]="description"
+        >
+          {{description}}
+      </mat-radio-button>
+  </mat-radio-group>
+  <app-mat-dialog-actions
+    [actionLabel]="reportLabel"
+    [actionDisabled]="!dialogControl.valid"
+    (clickCancel)="cancelClick()"
+    (clickAction)="reportEntity(dialogControl.value)"
+  >
+
+  </app-mat-dialog-actions>
+</span>

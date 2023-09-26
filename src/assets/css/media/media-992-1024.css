@@ -1,0 +1,46 @@
+/* #region  Media Screen (min-width : 992px) and (max-width : 1024px) */
+
+@media only screen and (min-width : 992px) and (max-width : 1024px) {
+
+    /* #region Header */
+
+        /* #region Toolbar */
+
+
+
+            .header-search-wrap{
+                margin-right: 8px;;
+            }
+
+        /* #endregion Toolbar */
+
+
+    /* #endregion Header */
+
+    /* #region List */
+
+        .item-list
+        .container{
+            width: 92rem !important;
+        }
+
+    /* #endregion List */
+
+    .app-item-wall{
+        width: 50% !important;
+    }
+
+    .app-item-carousel{
+        width: 50% !important;
+    }
+    /* #region Footer */
+        
+        .footer-section
+        .mat-toolbar-row{
+            max-width: 93rem !important;
+        }
+
+    /* #endregion Footer */
+}
+
+/* #endregion  Media Screen (min-width : 992px) and (max-width : 1024px)*/

@@ -1,0 +1,123 @@
+/* #region Media Screen (min-width : 569px) and (max-width : 640px) */
+
+@media only screen and (min-width : 569px) and (max-width : 640px) {
+
+    /* #region Header */
+
+
+
+
+        /* #region Search */
+
+
+        .header-search-wrap {
+            max-width: 648px ;
+        }
+
+            input.mat-chip-input{
+                width: 50px !important;
+                flex: 1 1 50px !important;
+            }
+
+            .search-action-bar-center{
+                height: 48px !important;
+            }
+
+            .search-action-bar-center:before{
+                bottom: 12px !important;
+            }
+
+        /* #endregion Search */
+
+    /* #endregion Header */
+
+    /* #region List */
+
+        .item-list
+        .container{
+            width: 100% !important;
+            padding: 0 44px !important;
+        }
+
+        .col-md-6 {
+            width: 70% !important;
+        }
+
+        /* .item-list
+        .col-md-4:nth-child(3n+1){
+            clear: none !important;
+        }
+
+        .item-list
+        .col-md-6:nth-child(2n+1){
+            clear: left !important;
+        }
+        
+        .item-list
+        .col-xs-6:nth-child(2n+1){
+            clear: left !important;
+        } 
+
+        .item-list
+        .col-lg-4:nth-child(3n+1){
+            clear: none !important;
+        } */
+
+    /* #endregion List */
+
+    /* #region Item */
+
+    .app-item-wall{
+        width: 82% !important;
+    }
+
+    .app-item-carousel{
+        width: 82% !important;
+    }
+
+    .item-card-item-path{
+        width: 90% !important;
+    }
+
+
+    /* #endregion Item */
+
+    /* #region Footer */
+
+        .footer-section{
+            display: inline-block !important;
+        }
+
+        .footer-section
+        .mat-toolbar-row{
+            display: inline;
+            height: 54px !important;
+            overflow: initial !important;
+        }
+        
+        .footer-toolbar-row-terms{
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 0 !important;;
+        }
+
+        .footer-toolbar-row-social{
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 0 !important
+        }
+
+        .footer-toolbar-row-powered{
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 0 !important
+        }
+
+    /* #endregion Footer */
+
+}
+
+/* #endregion Media Screen (min-width : 569px) and (max-width : 640px) */

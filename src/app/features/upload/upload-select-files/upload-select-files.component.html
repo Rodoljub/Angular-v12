@@ -1,0 +1,45 @@
+
+<input style="display: none;" id="selectedFile" type="file" 
+	accept="image/x-png,image/gif,image/jpeg" 
+    (change)="addFile($event)"
+/>
+
+
+<!--  || !videoAutoplay  ngClass="upload-image-card-button{{uploadmageButtonClass}} -->
+
+
+<!-- <button mat-fab ngClass="upload-image-card-button"
+    onclick="document.getElementById('selectedFile').click();">
+    <mat-icon svgIcon="cloud-upload" class="upload-cloud-icon">
+    </mat-icon>
+	<span class="up-browse">Browse</span> 
+</button> -->
+
+<!-- class="upload-card-info"  -->
+
+	<div  class="drag-drop-browse-wrap">
+		<p *ngIf="!touchDevice">{{dragNDropLabel}}</p>
+
+		<app-navigation-label
+			[navigationLabel]="'Browse'"
+			[active]="false"
+			(click)="onClickBrowse()"
+		>
+		</app-navigation-label>
+
+		<p >image.</p>
+	</div>
+
+
+
+	<!-- <button (click)="getCameraInput($event)" 
+			*ngIf="mobileView && !videoAutoplay" 
+			mat-fab class="get-camera-card-button">
+				<mat-icon svgIcon="add-photo">
+				</mat-icon>
+		</button>
+		<button (click)="getVideoSnapshot($event)" *ngIf="videoAutoplay"
+				mat-fab class="take-image-card-button">
+				<mat-icon svgIcon="add-photo" class="upload-cloud-icon">
+				</mat-icon>
+		</button> -->

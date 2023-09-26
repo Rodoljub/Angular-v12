@@ -1,0 +1,50 @@
+
+
+app-guest-interests{
+    width: 100%;
+    margin: 0 auto;
+}
+
+app-search-tags-form{
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.guest-wide-wrap{
+    margin-top: 24px;
+}
+
+.guest-mobile-wrap{
+    position: absolute;
+    top: 12px;
+    width: 100%;
+    padding: 0 16px;
+}
+
+.gmw-top{
+    top: 0;
+    padding: 0 !important;
+}
+
+
+
+.guest-logo-wrap{
+    width: 100%;
+}
+
+.guest-logo{
+    display: block !important;
+    margin: 0 auto;
+    width: 72px !important;
+    height: 72px !important;
+    
+}
+
+.hobbyists-image-wrap{
+    img{
+        display: block;
+        margin: 0 auto;
+        height: 100px;
+    }
+}

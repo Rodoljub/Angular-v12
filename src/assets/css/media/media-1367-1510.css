@@ -1,0 +1,17 @@
+
+@media only screen and (min-width : 1366px) and (max-width : 1510px) {
+
+
+    .header-search-wrap {
+        overflow: hidden;
+        /* margin: 0 auto; */
+        max-width: 763px ;
+        width: 100% ;
+    }
+
+
+.app-item-wall{
+    width: 45% !important;
+}
+
+}

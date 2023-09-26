@@ -1,0 +1,79 @@
+<!-- [formGroup]="uploadForm" -->
+<form novalidate [formGroup]="tagsForm" >
+     <!-- #region Form Field Tags appearance="outline" -->
+     <mat-form-field   color="{{inputColor}}" class="upload-tags-form-field"
+         id="upload-tags-form-field"
+         [floatLabel]="getFloatLabelValue()"
+         (click)="clickOnChipList($event)"
+     >
+     <mat-chip-list #chipList class="new-tag"></mat-chip-list>
+
+         <!-- #region Tag List [disabled]="true"-->
+            <mat-chip *ngFor="let tag of updatedItemTags; trackBy: trackTags"
+                ngClass="upload-tag-chip {{disabledTagClass}}" selected="true" 
+                [removable]="removable" 
+                (click)="removeTag(tag)"           
+            >
+                {{ tag }}
+                <mat-icon matChipRemove svgIcon="clear">
+                </mat-icon>
+            </mat-chip>
+         <!-- #endregion Tag List -->
+
+         <!-- #region Input -->
+             <input style="display:none; max-width:0"
+                 [matChipInputFor]="chipList" 
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="addTagFromInput($event)"
+                 [matAutocomplete]="auto"
+                 placeholder="Tags"   
+                 formControlName="tagsControl"
+             >
+
+             <textarea 
+             
+                 [formControl]="textareaControl"
+                 #tagTextareaElement 
+
+                 maxlength="25"
+                 cdkTextareaAutosize
+                 cdkAutosizeMinRows="1" 
+                 
+                 (keydown.enter)="addTagFromInput($event)"
+                 (blur)="blurTextarea()"
+                 placeholder="Add Tag"               
+                 type="text" 
+                 Name="searchInput"    
+                 style="min-width:25%"    
+             >
+             </textarea>
+             <mat-error *ngIf="tagsControl.invalid && !isTagsDisabled" class="mat-error">
+                <!-- <div>{{tagsControlErrorMessage}}</div> -->
+                <!-- <div class="mat-error-end">{{tags.length}} / {{tagsMaximum}}</div> -->
+            </mat-error>
+            <mat-hint>{{tagsControlHintMessage}}</mat-hint>
+            <mat-hint align="end"
+                *ngIf="!isTagsDisabled"
+            >{{updatedItemTags.length}} / {{tagsMaximum}}</mat-hint>
+
+         <!-- #endregion Input  -->
+
+     <mat-autocomplete 
+         class="mat-autocomplete-search"
+         #auto="matAutocomplete" 
+     >
+         <ng-container>
+             <mat-option disabled class="mat-option-tags" 
+                 *ngFor="let tag of filteredTags" [value]="tag" id="selectedTags"
+                 (click)="addTag(tag)"
+             >
+                 {{ tag }}
+             </mat-option>
+         </ng-container>
+         
+
+     </mat-autocomplete>
+
+ </mat-form-field> 
+ <!-- #endregion Form Field Tags -->
+</form>

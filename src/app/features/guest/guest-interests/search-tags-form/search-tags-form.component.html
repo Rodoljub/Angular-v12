@@ -1,0 +1,136 @@
+<p>Add more than 2 interests {{tagsHint}} </p>
+<div ngClass="search-tags-form-wrap {{searchBorderAccentColorClass}}" 
+    id="search-tags-form-wrap"
+> <!-- #region Form Field Tags appearance="outline" -->
+    <mat-form-field   floatLabel="never" class="search-mat-form-field"
+        id="search-mat-form-field"
+        hidden="load"
+        (click)="clickOnChipList()"
+        >
+        <mat-chip-list #chipList class="new-tag" >
+
+            <!-- #region Tag List -->
+                <ng-container *ngIf="isTagsList">
+                    <mat-chip *ngFor="let tag of selectedTags; trackBy: trackTags" 
+                        (click)="removeTag(tag)" 
+                        class="upload-tag-chip" 
+                        selected="false"
+                        [removable]="true" 
+                    >
+                        {{ tag }}
+                        <mat-icon matChipRemove svgIcon="clear"
+                        (click)="removeTag(tag)" >
+                        </mat-icon>
+                    </mat-chip>
+                </ng-container>
+            <!-- #endregion Tag List -->
+
+            <!-- #region Input -->
+                <input style="display:none; max-width:0"
+                    [matChipInputFor]="chipList" 
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="false"
+                    (matChipInputTokenEnd)="addTagFromInput($event)"
+                    [matAutocomplete]="auto"
+                    placeholder=""          
+                >
+
+                <textarea 
+                    ngClass="{{textareaTextAlignClass}}"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1" #searchInputElement 
+                    (click)="clickOnTextarea()"
+                    (keydown.enter)="addTagFromInput($event)"
+                    (focusout)="textareaOnBlur()"
+                    placeholder="{{searchInputPlaceholder}}" 
+                    [formControl]="searchControl"
+                    type="text" 
+                    Name="searchInput"    
+                    style="min-width:25%"   
+                    (focus)="focusInput()"
+                    (blur)="blurInput()"  
+                >
+                </textarea>
+            <!-- #endregion Input MobileView -->
+
+        </mat-chip-list>
+        
+
+        <mat-autocomplete 
+            class="mat-autocomplete-search"
+            #auto="matAutocomplete" 
+        >
+            <ng-container>
+                <!-- autocompleteTags -->
+                <mat-option disabled class="mat-option-tags" 
+                    *ngFor="let tag of searchedTags" [value]="tag.name" id="selectedTags"
+                    (click)="addTag(tag.name)"
+                >
+                    {{ tag.name }}
+                </mat-option>
+
+
+                <!-- 
+                <mat-option disabled class="mat-option-tags" 
+                    id="selectedTags"
+                    (click)="addTag('abstract', $event.stopPropagation())"
+                >
+                    abstract
+                </mat-option> -->
+
+            </ng-container>
+            
+
+        </mat-autocomplete>
+    </mat-form-field> 
+    <!-- #endregion Form Field Tags -->
+
+<!-- *ngIf="!load && currentView !== smallView" -->
+    <button *ngIf="!isMobileView" [disabled]="isCheckButtonDisabled" #checkButtonElement
+        mat-button
+        ngClass="header-search-button
+         {{searchButtonAccentColorClass}}"
+        (click)="storeInterests()"    
+    >
+        <mat-icon svgIcon="check">
+        </mat-icon>
+    </button>
+</div>
+<!--     matTooltip="{{buttonTooltip}}"
+        [matTooltipShowDelay]="tooltipShowDelay"
+        [matTooltipPosition]="buttonTooltipPosition"
+        #buttonTooltipEl="matTooltip"
+-->
+<div class="interests-mob-button-wrap">
+    <button  *ngIf="isMobileView && isInterestsFocused"
+        mat-fab  ngClass="guest-close-button" 
+
+        (click)="blurInterests()"
+    >
+        <mat-icon svgIcon="close"></mat-icon>
+    </button>
+
+    <button  *ngIf="isMobileView && isInterestsFocused" 
+        [disabled]="isCheckButtonDisabled"
+        mat-fab
+
+        (click)="storeInterests()"
+    >
+        <mat-icon svgIcon="check"></mat-icon>
+    </button>
+
+
+</div>
+
+<!-- <app-button-mat-fab-icon  *ngIf="isMobileView && !isCheckButtonDisabled"
+ class="guest-check-mobile-button"
+[buttonActive]="searchActive"
+[buttonClass]="searchButtonClass"
+[buttonInactiveClass]="'-inactive'"
+[buttonTooltip]="searchButtonTooltip"
+[buttonTooltipClass]="buttonTooltipClass" 
+[buttonTooltipPosition]="buttonTooltipPosition"
+[svgIcon]="'check'"
+(clickOnbutton)="doSearch()"
+>
+</app-button-mat-fab-icon> -->

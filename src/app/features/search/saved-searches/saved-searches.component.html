@@ -1,0 +1,14 @@
+
+<!-- <div class="container">
+        <div class="col-md-6"> -->
+                <div app-saved-search class="app-item-wall" 
+                        *ngFor="let saveSearchResult of saveSearchResults; let i=index; trackBy: trackByItems"
+                        [index]="i"
+                        [saveSearchResults]="saveSearchResults"
+                        [saveSearchResult]="saveSearchResult"
+                        [isMobileView]="isMobileView"
+                        (savedSearchEmitter)="onDeleteSaveSR($event)"
+                >
+                </div>
+        <!-- </div>
+</div> -->

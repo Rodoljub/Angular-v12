@@ -1,0 +1,85 @@
+<div ngClass="header-toolbar-wrapper" #header id="header" 
+	appScroll
+	[headerTranslateEnable]="headerTranslateEnable"
+>
+	<div class="header-toolbar">
+
+		<!-- #region Header Home Section -->
+<!-- 	
+			[tooltip]="homeTooltip"
+			[tooltipPosition]="homeTooltipPosition"
+			[tooltipClass]="homeTooltipClass"
+-->
+		<app-base-button-icon-image *ngIf=" (!searchInputIsOpen)"
+			class="header-logo"
+			[matIcon]="true"
+			[svgIcon]="'logo'"
+			[iconClass]="'app-header-mat-icon'"
+			(clickOnIcon)="headerNavigateToHome()"
+		>
+		</app-base-button-icon-image>
+		<!-- #endregion Header Home Section -->
+
+		<div *ngIf="!searchInputIsOpen && currentView === smallView" style="min-width: 89px;">
+			<!-- *ngIf="isViewSection" -->
+			<app-header-view 
+				ngClass="{{viewLabelClass}}"
+				[isViewSection]="isViewSection"
+			></app-header-view>
+		</div>
+
+		<app-search *ngIf="isBrowserPlatform"
+			[userAuthenticated]="userAuthenticated"
+			ngClass="header-search-wrap {{headerSearchCloseClass}}"
+			(changeSearchInputState)="onChangeSearchInputState($event)"
+			(headerTranslateEnable)="headerTranslateEnable = $event"
+		>
+		</app-search>
+
+		<div *ngIf="currentView !== smallView"
+			class="hv-wrap"
+		>
+			<app-header-view *ngIf="isViewSection"
+			[isViewSection]="isViewSection"></app-header-view>
+		</div>
+
+		<ng-container *ngIf="(!searchInputIsOpen)">
+
+			<app-header-desktop *ngIf="currentView !== smallView && desktopHeaderLoad"
+				[userAuthenticated]="userAuthenticated"
+			>
+			</app-header-desktop>
+
+			<app-notifications
+				*ngIf="userAuthenticated"
+			>
+			</app-notifications>
+			<app-header-menu
+				*ngIf="userAuthenticated  &&  currentView !== smallView"
+				[userAuthenticated]="userAuthenticated"
+			>
+			</app-header-menu>
+
+		</ng-container>
+
+	</div>
+</div>
+
+<app-header-mobile 
+	 *ngIf="currentView === smallView"
+	 [userAuthenticated]="userAuthenticated"
+	 (clickOnMenu)="isModalMenu = true"
+>
+</app-header-mobile>
+
+<modal-menu
+	*ngIf="isModalMenu"
+	[userAuthenticated]="userAuthenticated"
+	(clickOnClose)="isModalMenu = false"
+></modal-menu>
+
+<!-- <app-floating-menu
+	*ngIf="currentView === smallView && userAuthenticated"
+	
+>
+</app-floating-menu> -->
